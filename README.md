@@ -12,9 +12,9 @@ POSTGRES_PASSWORD=admin123
 POSTGRES_DB=database
 DB_HOST=db
 DB_PORT=5432
+```
 
-
-igue estos pasos para ejecutar la API de Jugadores en tu máquina local.
+Sigue estos pasos para ejecutar la API de Jugadores en tu máquina local.
 
 ### 1. Clonar el repositorio
 
