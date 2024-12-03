@@ -64,16 +64,18 @@ solicitud_Autenticacion("http://localhost:3000/jugadores")
             jugador.appendChild(pais);
             jugador.appendChild(servidor);
 
-            let tdBotones = document.createElement("td");
+            let Boton_Editar = document.createElement("td");
 
             let boton_modificar = document.createElement("button");
             boton_modificar.classList.add("btn-danger");
-            boton_modificar.innerText = "Editar";
 
             let i = document.createElement("i");
             i.classList.add("fa-solid", "fa-pen-to-square");
 
             boton_modificar.appendChild(i);
+            Boton_Editar.appendChild(boton_modificar)
+
+            let Boton_Eliminar = document.createElement("td");
 
             let boton_eliminar = document.createElement("button");
             boton_eliminar.classList.add("button", "is-danger", "is-light");
@@ -82,11 +84,11 @@ solicitud_Autenticacion("http://localhost:3000/jugadores")
             j.classList.add("fas", "fa-trash");
 
             boton_eliminar.appendChild(j);
+            Boton_Eliminar.appendChild(boton_eliminar)
 
-            tdBotones.appendChild(boton_modificar);
-            tdBotones.appendChild(boton_eliminar);
+            jugador.appendChild(Boton_Editar);
+            jugador.appendChild(Boton_Eliminar);
 
-            jugador.appendChild(tdBotones);
 
             jugadores.appendChild(jugador);
         });
