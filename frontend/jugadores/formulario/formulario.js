@@ -21,10 +21,16 @@ function solicitud_Autenticacion(url, method = 'GET', body = null) {
         headers: headers,
     });
 }
-solicitud_Autenticacion("http://localhost:3000/jugadores")
+
+window.onload = function (){
+    gestion_jugadores();
+}
+function gestion_jugadores() {
+    let jugadores = document.getElementById("jugadores");
+    jugadores.innerHTML = '';
+    solicitud_Autenticacion("http://localhost:3000/jugadores")
     .then(response => response.json())
     .then(datos => {
-        let jugadores = document.getElementById("jugadores")
 
         datos.forEach(dat_jugador => {
             let jugador = document.createElement("tr");
@@ -92,8 +98,13 @@ solicitud_Autenticacion("http://localhost:3000/jugadores")
 
             jugadores.appendChild(jugador);
         });
-
-        function eliminar_dato(id) {
-            solicitud_Autenticacion(`http://localhost:3000/jugadores/${id}`,'DELETE');
+    })
+}
+function eliminar_dato(id) {
+    solicitud_Autenticacion(`http://localhost:3000/jugadores/${id}`,'DELETE')
+    .then(response => {
+        if (response.ok) {
+            gestion_jugadores();
         }
     })
+}
