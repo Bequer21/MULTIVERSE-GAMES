@@ -27,7 +27,7 @@ cd MULTIVERSE-GAMES
 
 ### 2. Instalar dependencias
 
-Este proyecto está basado en Node.js. Antes de ejecutarlo, necesitas instalar todas las dependencias requeridas. Ejecuta el siguiente comando estando primero en la carpeta backend y luego en la carpeta del frontend para instalar las dependencias utilizando npm:
+Este proyecto está basado en Node.js. Antes de ejecutarlo, necesitas instalar todas las dependencias requeridas. Ejecuta el siguiente comando para instalar las dependencias utilizando npm:
 
 ```bash
 npm install
