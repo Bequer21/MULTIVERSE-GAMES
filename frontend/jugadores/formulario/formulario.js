@@ -25,5 +25,69 @@ function solicitud_Autenticacion(url, method = 'GET', body = null) {
 solicitud_Autenticacion("http://localhost:3000/jugadores")
     .then(response => response.json())
     .then(datos => {
-        console.log("Datos de jugadores:", datos);
+        let jugadores = document.getElementById("jugadores")
+
+        datos.forEach(dat_jugador => {
+            let jugador = document.createElement("tr");
+
+            let id = document.createElement("th");
+            id.innerHTML = dat_jugador.id;
+            
+            let nombre = document.createElement("td");
+            nombre.innerHTML = dat_jugador.nombre;
+            nombre.setAttribute("id", "jugador-" + dat_jugador.id);  
+            
+            let email = document.createElement("td");
+            email.innerHTML = dat_jugador.email;
+
+            let fecha = document.createElement("td");
+            fecha.innerHTML = dat_jugador.fecha_creacion;
+
+            let nivel = document.createElement("td");
+            nivel.innerHTML = dat_jugador.nivel;
+
+            let estado = document.createElement("td");
+            estado.innerHTML = dat_jugador.estado;
+
+            let pais = document.createElement("td");
+            pais.innerHTML = dat_jugador.pais;
+
+            let servidor = document.createElement("td");
+            servidor.innerHTML = dat_jugador.servidor;
+
+            jugador.appendChild(id);
+            jugador.appendChild(estado);
+            jugador.appendChild(nombre);
+            jugador.appendChild(email);
+            jugador.appendChild(fecha);
+            jugador.appendChild(nivel);
+            jugador.appendChild(pais);
+            jugador.appendChild(servidor);
+
+            let tdBotones = document.createElement("td");
+
+            let boton_modificar = document.createElement("button");
+            boton_modificar.classList.add("btn-danger");
+            boton_modificar.innerText = "Editar";
+
+            let i = document.createElement("i");
+            i.classList.add("fa-solid", "fa-pen-to-square");
+
+            boton_modificar.appendChild(i);
+
+            let boton_eliminar = document.createElement("button");
+            boton_eliminar.classList.add("button", "is-danger", "is-light");
+
+            let j = document.createElement("i");
+            j.classList.add("fas", "fa-trash");
+
+            boton_eliminar.appendChild(j);
+
+            tdBotones.appendChild(boton_modificar);
+            tdBotones.appendChild(boton_eliminar);
+
+            jugador.appendChild(tdBotones);
+
+            jugadores.appendChild(jugador);
+        });
     })
