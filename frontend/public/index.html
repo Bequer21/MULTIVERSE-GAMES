@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Torneos</title>
+    <link rel="icon" href="../../assets/duelo.jpg" type="image/jpg">
+
+</head>
+<body>
+    <div class="menu">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="home.html">
+                    <img src="../../assets/home.jpg" width="40" > Dota 2 vs Lol
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="heroes.html">HEROES </a>
+          
+                    <a class="navbar-item" href="partidas.html">PARTIDAS </a>
+                    
+                    <a class="navbar-item" href="perfil.html" >JUGADORES </a>
+                </div>
+          
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary"><strong>Sign up</strong></a>
+                            <a class="button is-light">Log in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="menu">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <h2>Gestion de Jugadores</h2>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <button class="button is-primary" id="openModal">Agregar</button>
+
+                        <div class="modal" id="myModal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content-margin-mobile">
+                                <form>
+                                    <div class="field">
+                                        <label class="label">Nombre</label>
+                                        <div class="control has-icons-left has-icons-right">
+                                          <input class="input" type="text" >
+                                          <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                          </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Contraseña</label>
+                                        <div class="control has-icons-left has-icons-right">
+                                          <input class="input is-success" type="text"  >
+                                          <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                          </span>
+                                          <span class="icon is-small is-right">
+                                            <i class="fas fa-check"></i>
+                                          </span>
+                                        </div>
+                                        <p class="help is-success">This username is available</p>
+                                    </div>
+                                      
+                                    <div class="field">
+                                        <label class="label">Email</label>
+                                        <div class="control has-icons-left has-icons-right">
+                                          <input class="input is-danger" type="email" placeholder="Email">
+                                          <span class="icon is-small is-left">
+                                            <i class="fas fa-envelope"></i>
+                                          </span>
+                                          <span class="icon is-small is-right">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                          </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="field">
+                                        <label class="label">Pais</label>
+                                        <div class="control has-icons-left has-icons-right">
+                                          <input class="input" type="text" >
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Nivel</label>
+                                        <div class="control has-icons-left has-icons-right">
+                                          <input class="input" type="text" >
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Servidor</label>
+                                        <div class="control has-icons-left has-icons-right">
+                                          <input class="input" type="text" >
+                                        </div>
+                                    </div>
+
+                                    <section class="section">
+                                        <button class="button is-info is-light">Guardar</button>
+                                    </section>
+                                </form>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close" id="closeModal"></button>
+                        </div>
+                        <script>
+                            const openModalBtn = document.getElementById('openModal');
+                            const closeModalBtn = document.getElementById('closeModal');
+                            const modal = document.getElementById('myModal');
+
+                            openModalBtn.addEventListener('click', function() {
+                                modal.classList.add('is-active');
+                            });
+
+                            closeModalBtn.addEventListener('click', function() {
+                                modal.classList.remove('is-active'); 
+                            });
+
+                            modal.querySelector('.modal-background').addEventListener('click', function() {
+                                modal.classList.remove('is-active');  // Cerrar el modal cuando se hace clic fuera del modal
+                            });
+                        </script>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <table class="table is-fullwidth">
+            <thead>
+              <tr>
+                <th><abbr title="Position">Orden</abbr></th>
+                <th><abbr title="Played">Estado</abbr></th>
+                <th><abbr title="Won">Jugador</abbr></th>
+                <th><abbr title="Drawn">Email</abbr></th>
+                <th><abbr title="Lost">Pais</abbr></th>
+                <th><abbr title="Goals for">Nivel</abbr></th>
+                <th><abbr title="Goals against">Servidor</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr> 
+                  <th>1</th>
+                  <td>Activo</td>
+                  <td>Pepito</td>
+                  <td>Pepito@fi.uba.ar</td>
+                  <td>Argentina</td>
+                  <td>35</td>
+                  <td>EE.UU</td>
+                  <td>
+                    <button class="btn-danger" >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button class="button is-danger is-light">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
