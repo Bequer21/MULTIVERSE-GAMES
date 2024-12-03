@@ -35,14 +35,14 @@ Esto instalará todas las dependencias del archivo 'package.json'
 ### 3. Configurar variables de entorno
 Crea un archivo .env en la raíz del proyecto y agrega las variables de entorno necesarias, como la conexión a la base de datos PostgreSQL. Un ejemplo de archivo .env puede ser:
 ```bash
-PORT=3000
+BACKEND_PORT=3000
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=tu_usuario
 DB_PASSWORD=tu_contraseña
 DB_NAME=jugadores_db
 BASIC_AUTH_USER=admin
-BASIC_AUTH_PASS=admin123
+BASIC_AUTH_PASSWORD=admin123
 ```
 Nota: los puertos son casi los mismos, así que no varían. Lo que sí contemplar las credenciales de la BD. El BASIC_AUTH_USER y el BASIC_AUTH_PASS pueden conservarse como prueba.
 
