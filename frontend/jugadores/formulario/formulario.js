@@ -21,7 +21,6 @@ function solicitud_Autenticacion(url, method = 'GET', body = null) {
         headers: headers,
     });
 }
-
 solicitud_Autenticacion("http://localhost:3000/jugadores")
     .then(response => response.json())
     .then(datos => {
@@ -79,6 +78,7 @@ solicitud_Autenticacion("http://localhost:3000/jugadores")
 
             let boton_eliminar = document.createElement("button");
             boton_eliminar.classList.add("button", "is-danger", "is-light");
+            boton_eliminar.onclick = function () {eliminar_dato(dat_jugador.id)};
 
             let j = document.createElement("i");
             j.classList.add("fas", "fa-trash");
@@ -92,4 +92,8 @@ solicitud_Autenticacion("http://localhost:3000/jugadores")
 
             jugadores.appendChild(jugador);
         });
+
+        function eliminar_dato(id) {
+            solicitud_Autenticacion(`http://localhost:3000/jugadores/${id}`,'DELETE');
+        }
     })
