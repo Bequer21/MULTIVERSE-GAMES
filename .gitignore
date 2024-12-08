@@ -1,2 +1,10 @@
-# Ignorar el archivo .env
+node_modules/
+
 .env
+
+db_data/
+postgres_data/
+*.log
+
+build/
+dist/
