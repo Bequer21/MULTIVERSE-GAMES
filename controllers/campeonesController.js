@@ -123,14 +123,35 @@ exports.remove = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const result = await pool.query('DELETE FROM campeones WHERE id_campeon = $1 RETURNING *', [id]);
+        // Obtener el campeón antes de eliminarlo para poder acceder a su imagen
+        const result = await pool.query('SELECT imagen FROM campeones WHERE id_campeon = $1', [id]);
 
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Campeón no encontrado' });
         }
 
-        res.json({ message: 'Campeón eliminado correctamente' });
+        // Obtener la URL de la imagen asociada con el campeón
+        const imagenUrl = result.rows[0].imagen;
+
+        // Si el campeón tiene una imagen, eliminar el archivo de la imagen
+        if (imagenUrl) {
+            const imagePath = `.${imagenUrl}`; // Asegúrate de incluir el directorio actual
+
+            // Eliminar la imagen del sistema de archivos
+            try {
+                fs.unlinkSync(imagePath); // Elimina el archivo
+                console.log('Imagen eliminada correctamente');
+            } catch (error) {
+                console.error('Error al eliminar la imagen:', error);
+            }
+        }
+
+        // Eliminar el campeón de la base de datos
+        await pool.query('DELETE FROM campeones WHERE id_campeon = $1', [id]);
+
+        res.json({ message: 'Campeón y su imagen eliminados correctamente' });
     } catch (error) {
+        console.error('Error al eliminar el campeón:', error);
         res.status(500).json({ error: 'Error al eliminar el campeón' });
     }
 };
