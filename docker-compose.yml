@@ -4,6 +4,7 @@ services:
   backend:
     build:
       context: ./backend
+    container_name: backend-container
     ports:
       - "3000:3000"
     environment:
@@ -20,6 +21,7 @@ services:
   frontend:
     build:
       context: ./frontend
+    container_name: frontend-container
     ports:
       - "8080:3000"
     networks:
