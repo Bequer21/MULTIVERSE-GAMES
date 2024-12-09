@@ -4,6 +4,7 @@ const cors = require('cors');
 const jugadoresRoutes = require('./routes/jugadores');
 const campeonesRoutes = require('./routes/campeones'); // Importar rutas de Campeones
 const habilidadesRoutes = require('./routes/habilidades');
+const equiposRoutes = require('./routes/equipos');
 require('dotenv').config();
 
 const fs = require('fs');
@@ -26,7 +27,7 @@ app.use(bodyParser.json());
 app.use('/jugadores', jugadoresRoutes);
 app.use('/campeones', campeonesRoutes); // Agregar las rutas de Campeones
 app.use('/habilidades', habilidadesRoutes);
-
+app.use('/api/equipos', equiposRoutes);
 app.use('/img', express.static('img'));
 
 // Inicio del servidor

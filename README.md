@@ -277,26 +277,26 @@ La API de Campeones permite gestionar información sobre los campeones del siste
 - **Respuesta exitosa (200):**  
      ```json
   [
-  {
-    "id_campeon": 1,
-    "nombre": "Garen",
-    "habilidad": "Decisive Strike",
-    "rol": "Luchador",
-    "imagen": "/uploads/images/garen.png",
-    "historia": "Garen es un campeón...",
-    "dificultad": "Media",
-    "fecha_creacion": "2024-01-01T12:00:00.000Z"
-  },
-  {
-    "id_campeon": 2,
-    "nombre": "Ahri",
-    "habilidad": "Orb of Deception",
-    "rol": "Mago",
-    "imagen": "/uploads/images/ahri.png",
-    "historia": "Ahri es una campeona...",
-    "dificultad": "Alta",
-    "fecha_creacion": "2024-01-01T12:00:00.000Z"
-  }
+      {
+          "id_campeon": 1,
+          "nombre": "Ahri",
+          "rol": "Mago",
+          "imagen": "/img/campeones/1_Ahri.jpg",
+          "historia": "Una zorra mágica que busca su humanidad.",
+          "dificultad": "Media",
+          "fecha_creacion": "2024-12-01T03:00:00.000Z",
+          "habilidad": {
+              "id": 1,
+              "nombre": "Orbe del Engaño",
+              "fuerza": 80,
+              "descripcion": "Lanza un orbe mágico que regresa al lanzador, infligiendo daño en el camino.",
+              "tiempo_enfriamiento": {
+                  "seconds": 7
+              },
+              "consumo_mana": 65
+          }
+      },
+      ...
   ]
 
     ```
@@ -321,12 +321,21 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/
   {
     "id_campeon": 1,
     "nombre": "Garen",
-    "habilidad": "Decisive Strike",
     "rol": "Luchador",
     "imagen": "/uploads/images/garen.png",
     "historia": "Garen es un campeón...",
     "dificultad": "Media",
-    "fecha_creacion": "2024-01-01T12:00:00.000Z"
+    "fecha_creacion": "2024-01-01T12:00:00.000Z",
+    "habilidad": {
+              "id": 1,
+              "nombre": "Orbe del Engaño",
+              "fuerza": 80,
+              "descripcion": "Lanza un orbe mágico que regresa al lanzador, infligiendo daño en el camino.",
+              "tiempo_enfriamiento": {
+                  "seconds": 7
+              },
+              "consumo_mana": 65
+    }
   }
 
     ```
@@ -349,7 +358,7 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/1
     ```json
   {
     "nombre": "Yasuo",
-    "habilidad": "Steel Tempest",
+    "habilidad": 1,
     "rol": "Espadachín",
     "imagen": "garen.png",
     "historia": "Yasuo es un campeón...",
@@ -362,7 +371,7 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/1
   {
     "id_campeon": 3,
     "nombre": "Yasuo",
-    "habilidad": "Steel Tempest",
+    "habilidad": 1,
     "rol": "Espadachín",
     "imagen": "/uploads/images/yasuo.png",
     "historia": "Yasuo es un campeón...",
@@ -397,7 +406,7 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
     ```json
   {
     "nombre": "Yasuo Modificado",
-    "habilidad": "Steel Tempest Mejorado",
+    "habilidad": 2,
     "rol": "Espadachín",
     "imagen": "yasuo-modificado.png",
     "historia": "Yasuo ahora tiene una nueva habilidad...",
@@ -410,7 +419,7 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
   {
     "id_campeon": 3,
     "nombre": "Yasuo Modificado",
-    "habilidad": "Steel Tempest Mejorado",
+    "habilidad": 2,
     "rol": "Espadachín",
     "imagen": "/uploads/images/yasuo-modificado.png",
     "historia": "Yasuo ahora tiene una nueva habilidad...",
@@ -429,7 +438,7 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
 ```bash
 curl -u admin:admin123 -X PUT http://localhost:5000/campeones/1 \
   -F "nombre=Yasuo Modificado" \
-  -F "habilidad=Steel Tempest Mejorado" \
+  -F "habilidad=2" \
   -F "rol=Espadachín" \
   -F "historia=Yasuo tiene una nueva habilidad..." \
   -F "dificultad=Alta" \

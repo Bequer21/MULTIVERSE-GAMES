@@ -52,6 +52,40 @@
             border-radius: 50%;
         }
 
+        /* Estilo para el tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            padding: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 250px;
+            background-color: #6c757d;
+            color: #fff;
+            text-align: left;
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Aparece arriba */
+            left: 50%;
+            margin-left: -125px; /* Centrado */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -101,7 +135,31 @@
                 celdaNombre.textContent = campeon.nombre;
                 
                 const celdaHabilidad = document.createElement('td');
-                celdaHabilidad.textContent = campeon.habilidad;
+                // Crear un botón de tooltip con todos los detalles de la habilidad
+                const habilidadTooltip = document.createElement('button');
+                habilidadTooltip.classList.add('tooltip');
+                habilidadTooltip.textContent = 'Ver detalle';
+                
+                const tooltipTexto = document.createElement('span');
+                tooltipTexto.classList.add('tooltiptext');
+                
+                // Verifica si existe la habilidad y tiene todos los atributos
+                if (campeon.habilidad) {
+                    const habilidad = campeon.habilidad;
+
+                    tooltipTexto.innerHTML = `
+                        <strong>Nombre:</strong> ${habilidad.nombre}<br>
+                        <strong>Descripción:</strong> ${habilidad.descripcion}<br>
+                        <strong>Fuerza:</strong> ${habilidad.fuerza}<br>
+                        <strong>Tiempo de Enfriamiento:</strong> ${habilidad.tiempo_enfriamiento.seconds} segundos<br>
+                        <strong>Consumo de Mana:</strong> ${habilidad.consumo_mana} mana<br>
+                    `;
+                } else {
+                    tooltipTexto.textContent = "No hay detalles disponibles";  // Mensaje por defecto si no hay habilidad
+                }
+                
+                habilidadTooltip.appendChild(tooltipTexto);
+                celdaHabilidad.appendChild(habilidadTooltip);
                 
                 const celdaRol = document.createElement('td');
                 celdaRol.textContent = campeon.rol;
