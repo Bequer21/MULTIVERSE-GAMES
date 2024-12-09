@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Campeones</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo básico para la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        td img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Campeones del Juego</h1>
+        
+        <!-- Tabla para mostrar los campeones -->
+        <table id="tabla-campeones">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Habilidad</th>
+                    <th>Rol</th>
+                    <th>Historia</th>
+                    <th>Dificultad</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán las filas con los campeones -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+<script>
+    // Función para obtener los campeones desde el servidor y mostrar en la tabla
+    async function obtenerCampeones() {
+        try {
+            const response = await fetch('http://localhost:5000/campeones', {
+                headers: {
+                    'Authorization': 'Basic ' + btoa('admin:admin123'), // Reemplazar con tu usuario y contraseña
+                },
+            }); // Asegúrate de que esta URL apunte a tu endpoint de la API
+            
+            const campeones = await response.json();
+            
+            const tabla = document.getElementById('tabla-campeones').getElementsByTagName('tbody')[0];
+            
+            campeones.forEach(campeon => {
+                // Crear una fila nueva para la tabla
+                const fila = document.createElement('tr');
+                
+                // Crear las celdas para cada columna
+                const celdaNombre = document.createElement('td');
+                celdaNombre.textContent = campeon.nombre;
+                
+                const celdaHabilidad = document.createElement('td');
+                celdaHabilidad.textContent = campeon.habilidad;
+                
+                const celdaRol = document.createElement('td');
+                celdaRol.textContent = campeon.rol;
+                
+                const celdaHistoria = document.createElement('td');
+                celdaHistoria.textContent = campeon.historia;
+                
+                const celdaDificultad = document.createElement('td');
+                celdaDificultad.textContent = campeon.dificultad;
+                
+                // Crear la celda de la imagen
+                const celdaImagen = document.createElement('td');
+                const img = document.createElement('img');
+                img.src = `http://localhost:5000${campeon.imagen}`;  // Corregir aquí para la URL de la imagen
+                celdaImagen.appendChild(img);
+
+                // Agregar las celdas a la fila
+                fila.appendChild(celdaNombre);
+                fila.appendChild(celdaHabilidad);
+                fila.appendChild(celdaRol);
+                fila.appendChild(celdaHistoria);
+                fila.appendChild(celdaDificultad);
+                fila.appendChild(celdaImagen);
+                
+                // Agregar la fila a la tabla
+                tabla.appendChild(fila);
+            });
+        } catch (error) {
+            console.error('Error al obtener los campeones:', error);
+        }
+    }
+
+    // Llamar a la función cuando la página esté lista
+    document.addEventListener('DOMContentLoaded', obtenerCampeones);
+
+</script>
+</html>
