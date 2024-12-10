@@ -13,3 +13,50 @@ closeModalBtn.addEventListener('click', function() {
 modal.querySelector('.modal-background').addEventListener('click', function() {
     modal.classList.remove('is-active');  // Cerrar el modal cuando se hace clic fuera del modal
 });
+
+function limpiarModal() {
+    document.getElementById('nombre').value = ''; 
+    document.getElementById('contraseña').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('nivel').value = '';
+    document.getElementById('estado').value = '';
+    document.getElementById('pais').value = '';
+    document.getElementById('servidor').value = '';
+}
+function cerrarModal() {
+    modal.classList.remove('is-active'); 
+}
+function crearJugador() {
+    event.preventDefault();
+    const Nombre = document.getElementById('nombre').value;
+    const Contrasena = document.getElementById('contraseña').value;
+    const Email = document.getElementById('email').value;
+    const Nivel = document.getElementById('nivel').value;
+    const Estado = document.getElementById('estado').value;
+    const Pais = document.getElementById('pais').value;
+    const Servidor = document.getElementById('servidor').value;
+
+    let datos_jugador = {
+        nombre: Nombre, 
+        contrasena: Contrasena, 
+        email: Email,
+        nivel: parseInt(Nivel), 
+        estado: Estado, 
+        pais: Pais, 
+        servidor: Servidor
+    };
+    
+    solicitud_Autenticacion("http://localhost:5000/jugadores",'POST',datos_jugador)
+        .then(response => {
+            if (response.status === 201) {
+                alert('Jugador creado con exito');
+                cerrarModal();
+                limpiarModal();
+                gestion_jugadores();
+            }else {
+                alert('No se pudo crear');
+                limpiarModal();
+                cerrarModal();
+            }
+        })
+}
