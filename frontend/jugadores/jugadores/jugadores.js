@@ -72,6 +72,7 @@ function gestion_jugadores() {
             let Boton_Editar = document.createElement("td");
 
             let boton_modificar = document.createElement("button");
+            boton_modificar.id = 'editar_jugador';
             boton_modificar.classList.add("btn-danger");
 
             let i = document.createElement("i");
