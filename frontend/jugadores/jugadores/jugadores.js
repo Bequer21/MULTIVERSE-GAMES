@@ -28,7 +28,7 @@ window.onload = function (){
 function gestion_jugadores() {
     let jugadores = document.getElementById("jugadores");
     jugadores.innerHTML = '';
-    solicitud_Autenticacion("http://localhost:3000/jugadores")
+    solicitud_Autenticacion("http://localhost:5000/jugadores")
     .then(response => response.json())
     .then(datos => {
 
@@ -36,7 +36,7 @@ function gestion_jugadores() {
             let jugador = document.createElement("tr");
 
             let id = document.createElement("th");
-            id.innerHTML = dat_jugador.id;
+            id.innerHTML = dat_jugador.id_jugador;
             
             let nombre = document.createElement("td");
             nombre.innerHTML = dat_jugador.nombre;
@@ -84,7 +84,7 @@ function gestion_jugadores() {
 
             let boton_eliminar = document.createElement("button");
             boton_eliminar.classList.add("button", "is-danger", "is-light");
-            boton_eliminar.onclick = function () {eliminar_dato(dat_jugador.id)};
+            boton_eliminar.onclick = function () {eliminar_dato(dat_jugador.id_jugador)};
 
             let j = document.createElement("i");
             j.classList.add("fas", "fa-trash");
@@ -101,7 +101,7 @@ function gestion_jugadores() {
     })
 }
 function eliminar_dato(id) {
-    solicitud_Autenticacion(`http://localhost:3000/jugadores/${id}`,'DELETE')
+    solicitud_Autenticacion(`http://localhost:5000/jugadores/${id}`,'DELETE')
     .then(response => {
         if (response.ok) {
             gestion_jugadores();
