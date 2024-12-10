@@ -28,6 +28,24 @@ function cerrarModal() {
     modal.classList.remove('is-active'); 
 }
 function crearJugador() {
+
+    const form = document.getElementById('myForm');
+    const inputs = form.querySelectorAll('input[required]');
+    let formIsValid = true;
+
+    inputs.forEach(input => {
+        if (!input.value) {
+            formIsValid = false;
+            input.classList.add('is-danger'); 
+        } else {
+            input.classList.remove('is-danger');
+        }
+    });
+
+    if (!formIsValid) {
+        event.preventDefault();
+        alert('Por favor, completa todos los campos requeridos.');
+    }
     event.preventDefault();
     const Nombre = document.getElementById('nombre').value;
     const Contrasena = document.getElementById('contraseña').value;
