@@ -1,4 +1,6 @@
-
+label{
+  padding-top:10px
+}
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #000; /* Fondo negro para toda la página */

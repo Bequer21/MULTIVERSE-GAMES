@@ -52,7 +52,7 @@
     
   </div>
 
-  <!-- Modal para Ver Detalles del Campeón -->
+  <!-- MODAL PARA VER DETALLES-->
   <div class="modal fade" id="championModal" tabindex="-1" aria-labelledby="championModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -62,19 +62,39 @@
         </div>
         <div class="modal-body">
           <div id="championDetails">
-            <img id="modal-champion-image" class="img-fluid" alt="Imagen del Campeón">
+            <img id="modal-champion-image" class="img-fluid w-100" alt="Imagen del Campeón">
             <p><strong>Nombre:</strong> <span id="modal-champion-name"></span></p>
+            <p><strong>Historia:</strong> <span id="modal-champion-history"></span></p>
             <p><strong>Habilidad:</strong> <span id="modal-champion-ability"></span></p>
             <p><strong>Rol:</strong> <span id="modal-champion-role"></span></p>
-            <p><strong>Historia:</strong> <span id="modal-champion-history"></span></p>
             <p><strong>Dificultad:</strong> <span id="modal-champion-difficulty"></span></p>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="editChampionButton" class="btn btn-dark">Editar</button>
+          <button type="button" id="deleteChampionButton" class="btn btn-danger">Borrar</button>
         </div>
       </div>
     </div>
   </div>
 
 
+  <!-- MODAL PARA VER EDITAR-->
+  <div class="modal fade" id="championModaledit"  tabindex="-1" aria-labelledby="championModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="championModalLabel">Editar Campeón</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="championedit" >
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- Modal para Agregar Campeón -->
 <div class="modal fade" id="addChampionModal" tabindex="-1" aria-labelledby="addChampionModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -158,6 +178,8 @@
   </div>
 </div>
 
+
+<!--- MODAL PARA AGREGAR HABILIDAD -->
 <div class="modal fade" id="addAbilityModal" tabindex="-1" aria-labelledby="addAbilityModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -187,7 +209,7 @@
             <label for="abilityManaCost" class="form-label">Consumo de Mana</label>
             <input type="text" class="form-control" id="abilityManaCostInput" name="consumo_mana" required>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Agregar Habilidad</button>
+          <button type="submit" class="btn btn-danger w-100">Agregar Habilidad</button>
         </form>
       </div>
     </div>
@@ -195,7 +217,6 @@
 </div>   
 
   <div class="container mt-5" id="champions-container">
-    <!-- Cards will be dynamically generated here -->
   </div>
   
 

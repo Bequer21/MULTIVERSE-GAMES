@@ -1,3 +1,4 @@
+let id_campeon_global
 
 
 // Función para obtener todos los campeones
@@ -45,6 +46,8 @@ async function getAllChampions() {
       card.addEventListener('click', function() {
         const id = this.getAttribute('data-id');
         getChampionDetails(id);
+        id_campeon_global = id
+
       });
     });
   }
@@ -63,14 +66,16 @@ async function getAllChampions() {
       return;
     }
   
-    const champion = await response.json();
+    let champion = await response.json();
+    console.log(champion)
     displayChampionModal(champion);
   }
   
   // Función para llenar el modal con los detalles del campeón
   function displayChampionModal(champion) {
+    
     document.getElementById('modal-champion-name').innerText = champion.nombre;
-    document.getElementById('modal-champion-image').src = champion.imagen;
+    document.getElementById('modal-champion-image').src = "http://localhost:5000"+champion.imagen;
     document.getElementById('modal-champion-role').innerText = champion.rol;
     document.getElementById('modal-champion-history').innerText = champion.historia;
     document.getElementById('modal-champion-difficulty').innerText = champion.dificultad;
@@ -242,3 +247,177 @@ async function getAllChampions() {
             });
         });
       });
+
+
+
+
+
+
+      document.getElementById('editChampionButton').addEventListener('click', () => {
+
+
+        const ChampionModalDetailElement = document.getElementById('championModal');
+        const ChampionModalDetail = bootstrap.Modal.getInstance(ChampionModalDetailElement) || new bootstrap.Modal(ChampionModalDetailElement);
+        ChampionModalDetail.hide(); // Oculta el modal de agregar campeón
+    
+
+
+
+        const modalEdit = new bootstrap.Modal(document.getElementById('championModaledit'));
+
+        modalEdit.show()
+        let rol = document.getElementById('modal-champion-role').innerText
+        let difficulty = document.getElementById('modal-champion-difficulty').innerText;
+
+        const detailsContainer = document.getElementById('championedit');
+        // Transformar los detalles en campos editables
+        let textoPredeterminado = document.getElementById('modal-champion-ability').innerText;
+        detailsContainer.innerHTML = `
+          <div>
+            <label>Nombre:</label>
+            <input type="text" id="edit-champion-name" class="form-control" value="${document.getElementById('modal-champion-name').innerText}">
+          </div>
+          <div>
+            <label>Habilidad:</label>
+            <select class="form-select" id="edit-champion-ability" name="habilidad" required>
+              <option value="" disabled selected>Selecciona una habilidad</option>
+              <!-- Opciones dinámicas -->
+            </select>
+            </div>
+          <div>
+            <label>Rol:</label>
+              <select class="form-select" id="edit-champion-role" class="form-control" required>
+              <option value="" disabled selected>Selecciona Rol</option>
+              <option value="Tirador">Tirador</option>
+              <option value="Mago">Mago</option>
+              <option value="Luchador">Luchador</option>
+              <option value="Asesino">Asesino</option>
+              <option value="Tanque">Tanque</option>
+              <option value="Soporte">Soporte</option>
+            </select>
+
+          </div>
+          <div>
+            <label>Historia:</label>
+            <textarea id="edit-champion-history" class="form-control">${document.getElementById('modal-champion-history').innerText}</textarea>
+          </div>
+          <div>
+            <label>Dificultad:</label>
+            <select class="form-select" id="edit-champion-difficulty" required>
+              <option value="" disabled selected>Selecciona la dificultad</option>
+              <option value="Baja">Baja</option>
+              <option value="Media">Media</option>
+              <option value="Alta">Alta</option>
+            </select>
+          </div>
+                <div style="padding-bottom: 30px;">
+        <label>Cargar nueva imagen:</label>
+        <input type="file" id="edit-champion-image" class="form-control">
+      </div>
+          <button type="button" id="saveEditChampionButton" class="btn btn-warning mt-3">Guardar</button>
+    
+          </div>
+          `;
+        // Selecciona el elemento <select>
+        const rolelement = document.getElementById("edit-champion-role");
+        const difficultyelement = document.getElementById("edit-champion-difficulty")
+
+        // Itera sobre las opciones para encontrar el texto coincidente
+        Array.from(difficultyelement.options).forEach(option => {
+            if (option.textContent === difficulty) {
+            option.selected = true;
+            }
+        });
+
+        // Itera sobre las opciones para encontrar el texto coincidente
+        Array.from(rolelement.options).forEach(option => {
+            if (option.textContent === rol) {
+            option.selected = true;
+            }
+        });
+
+        fetch('http://localhost:5000/habilidades', {
+            headers: {
+            'Authorization': 'Basic ' + btoa('admin:admin123'), // Autenticación básica
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            const abilitySelect = document.getElementById('edit-champion-ability');
+
+            console.log(data);
+            data.forEach(habilidad => {
+            const option = document.createElement('option');
+            option.value = habilidad.id_habilidad;
+            option.textContent = habilidad.nombre;
+            abilitySelect.appendChild(option);
+            if (option.textContent === textoPredeterminado) {
+                option.selected = true;
+              }
+            });
+        })
+        .catch(error => console.error('Error al cargar habilidades:', error));
+
+
+  
+    // Agregar funcionalidad al botón de guardar
+    document.getElementById('saveEditChampionButton').addEventListener('click', async () => {
+        const formData = new FormData();
+
+        // Agregar los campos al FormData
+        formData.append('nombre', document.getElementById('edit-champion-name').value);
+        formData.append('habilidad', document.getElementById('edit-champion-ability').value);
+        formData.append('rol', document.getElementById('edit-champion-role').value);
+        formData.append('historia', document.getElementById('edit-champion-history').value);
+        formData.append('dificultad', document.getElementById('edit-champion-difficulty').value);
+
+        // Verificar si se seleccionó una nueva imagen
+        const imageFile = document.getElementById('edit-champion-image').files[0];
+        if (imageFile) {
+            formData.append('imagen', imageFile);
+        }
+
+        try {
+            const response = await fetch(`http://localhost:5000/campeones/${id_campeon_global}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('admin:admin123')
+                },
+                body: formData
+            });
+
+            if (response.ok) {
+                alert('Campeón actualizado exitosamente');
+                location.reload();
+            } else {
+                alert('Error al actualizar el campeón');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+    });
+
+
+
+
+    //BORRAR CAMPEON
+    document.getElementById('deleteChampionButton').addEventListener('click', () => {
+        if (confirm('¿Estás seguro de que quieres borrar este campeón?')) {
+            fetch(`http://localhost:5000/campeones/${id_campeon_global}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('admin:admin123')
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Campeón eliminado exitosamente');
+                    location.reload();
+                } else {
+                    alert('Error al eliminar el campeón');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    });
