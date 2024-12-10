@@ -24,6 +24,7 @@ function limpiarModal() {
     document.getElementById('servidor').value = '';
 }
 function cerrarModal() {
+    const modal = document.getElementById('myModal');
     modal.classList.remove('is-active'); 
 }
 function crearJugador() {

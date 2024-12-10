@@ -125,7 +125,7 @@ function editar_jugador(id) {
     modal.setAttribute('data-id', id.id_jugador);
 }
 
-function editar(event) {
+function editar() {
     event.preventDefault();
     const modal = document.getElementById('myModal');
     const idJugador = modal.getAttribute('data-id');
@@ -150,12 +150,12 @@ function editar(event) {
     solicitud_Autenticacion(`http://localhost:5000/jugadores/${idJugador}`,'PUT',nuevos_datos)
         .then(response => {
             if (response.status === 200) {
-                alert('Jugador creado con exito');
+                alert('Jugador ediato con exito');
                 cerrarModal();
                 limpiarModal();
                 gestion_jugadores();
             }else {
-                alert('No se pudo crear');
+                alert('No se pudo editar');
                 limpiarModal();
                 cerrarModal();
             }
