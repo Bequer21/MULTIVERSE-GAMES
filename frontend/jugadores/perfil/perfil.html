@@ -57,11 +57,11 @@
                         <div class="modal" id="myModal">
                             <div class="modal-background"></div>
                             <div class="modal-content-margin-mobile">
-                                <form>
+                                <form id="formulario">
                                     <div class="field">
                                         <label class="label">Nombre</label>
                                         <div class="control has-icons-left has-icons-right">
-                                          <input id="nombre" class="input" type="text" >
+                                          <input id="nombre" class="input" type="text" required>
                                           <span class="icon is-small is-left">
                                             <i class="fas fa-user"></i>
                                           </span>
@@ -71,7 +71,7 @@
                                     <div class="field">
                                         <label class="label">Contraseña</label>
                                         <div class="control has-icons-left has-icons-right">
-                                          <input id="contraseña" class="input is-success" type="text"  >
+                                          <input id="contraseña" class="input is-success"  type="password" required>
                                           <span class="icon is-small is-left">
                                             <i class="fas fa-user"></i>
                                           </span>
@@ -84,7 +84,7 @@
                                     <div class="field">
                                         <label class="label">Email</label>
                                         <div class="control has-icons-left has-icons-right">
-                                          <input id="email" class="input is-danger" type="email" placeholder="Email">
+                                          <input id="email" class="input is-danger" type="email" placeholder="Email" required>
                                           <span class="icon is-small is-left">
                                             <i class="fas fa-envelope"></i>
                                           </span>
@@ -97,21 +97,21 @@
                                     <div class="field">
                                         <label class="label">Nivel</label>
                                         <div class="control has-icons-left has-icons-right">
-                                          <input id="nivel" class="input" type="number" >
+                                          <input id="nivel" class="input" type="number" required>
                                         </div>
                                     </div>
 
                                     <div class="field">
                                         <label class="label">Estado</label>
                                         <div class="control has-icons-left has-icons-right">
-                                          <input id="estado" class="input" type="text" >
+                                          <input id="estado" class="input" type="text" required>
                                         </div>
                                     </div>
 
                                     <div class="field">
                                         <label class="label">Pais</label>
                                         <div class="control has-icons-left has-icons-right">
-                                          <input id="pais"  class="input" type="text" >
+                                          <input id="pais"  class="input" type="text" required>
                                         </div>
                                     </div>
 
