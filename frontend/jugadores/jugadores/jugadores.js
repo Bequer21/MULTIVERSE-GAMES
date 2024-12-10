@@ -74,6 +74,7 @@ function gestion_jugadores() {
             let boton_modificar = document.createElement("button");
             boton_modificar.id = 'editar_jugador';
             boton_modificar.classList.add("btn-danger");
+            boton_modificar.onclick = function () {editar_jugador(dat_jugador)};
 
             let i = document.createElement("i");
             i.classList.add("fa-solid", "fa-pen-to-square");
@@ -108,4 +109,55 @@ function eliminar_dato(id) {
             gestion_jugadores();
         }
     })
+}
+function editar_jugador(id) {
+    document.getElementById('nombre').value = id.nombre;
+    document.getElementById('contraseña').value = id.contrasena;
+    document.getElementById('email').value = id.email;
+    document.getElementById('nivel').value = id.nivel;
+    document.getElementById('estado').value = id.estado;
+    document.getElementById('pais').value = id.pais;
+    document.getElementById('servidor').value = id.servidor;
+
+    const modal = document.getElementById('myModal');
+    modal.classList.add('is-active');
+
+    modal.setAttribute('data-id', id.id_jugador);
+}
+
+function editar(event) {
+    event.preventDefault();
+    const modal = document.getElementById('myModal');
+    const idJugador = modal.getAttribute('data-id');
+    
+    const Nombre = document.getElementById('nombre').value;
+    const Contrasena = document.getElementById('contraseña').value;
+    const Email = document.getElementById('email').value;
+    const Nivel = document.getElementById('nivel').value;
+    const Estado = document.getElementById('estado').value;
+    const Pais = document.getElementById('pais').value;
+    const Servidor = document.getElementById('servidor').value;
+    
+    let nuevos_datos = {
+        nombre: Nombre, 
+        contrasena: Contrasena, 
+        email: Email,
+        nivel: parseInt(Nivel), 
+        estado: Estado, 
+        pais: Pais, 
+        servidor: Servidor
+    }
+    solicitud_Autenticacion(`http://localhost:5000/jugadores/${idJugador}`,'PUT',nuevos_datos)
+        .then(response => {
+            if (response.status === 200) {
+                alert('Jugador creado con exito');
+                cerrarModal();
+                limpiarModal();
+                gestion_jugadores();
+            }else {
+                alert('No se pudo crear');
+                limpiarModal();
+                cerrarModal();
+            }
+        })
 }
