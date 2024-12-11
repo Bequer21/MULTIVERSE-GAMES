@@ -18,7 +18,7 @@ body {
     background-color: #000 !important;
     color: #fff !important;
 }
-.modal-content {
+.custom-modal-2 {
     height: 45vh; /* Aumenta la altura del modal */
     overflow-y: auto; /* Permite el desplazamiento si el contenido excede la altura */
 }
@@ -34,4 +34,8 @@ body {
     background-color: #000;  /* Fondo negro cuando el mouse pasa por encima */
     color: #fff;  /* Texto blanco cuando el mouse pasa por encima */
     border: 1px solid #fff;  /* Borde blanco cuando el mouse pasa por encima */
+}
+.modal-formulario {
+    height: 60vh; /* Aumenta la altura del modal */
+    overflow-y: auto; /* Permite el desplazamiento si el contenido excede la altura */
 }
