@@ -11,29 +11,18 @@
 }
 
 .box {
-    background-color: white;
+    background-color: rgb(51, 51, 51);
     border: 4px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(90deg, #004eae, #ff5a00);
     animation: gradient-animation 5s infinite;
     padding: 20px;
     width: 400px;
-    color: black;
-}
-
-.box {
-    background-color: white;
-    border: 4px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(90deg, #004eae, #ff5a00);
-    animation: gradient-animation 5s infinite;
-    padding: 20px;
-    width: 400px;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .box h2 {
-    color: #272727;
+    color: #ffffff;
     font-weight: bold;
 }
 
