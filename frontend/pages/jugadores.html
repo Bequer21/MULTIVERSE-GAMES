@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeones</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles/home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-item" href="index.html" onclick="setActive(this)"><img src="../assets/logotipo.jpg" alt="Logo" style="height: 40px; width: auto;"></a>
+        <a class="navbar-item" href="campeones.html" onclick="setActive(this)">Campeones</a>
+        <a class="navbar-item" href="partidas.html" onclick="setActive(this)">Partidas</a>
+        <a class="navbar-item active" href="jugadores.html" onclick="setActive(this)">Jugadores</a>
+    </nav>
+
+    <div class="content">
+        <div class="text">
+            <h1>Campeones</h1>
+            <p>Pagina Jugadores</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <ul class="footer-names">
+                <li>Mario Schieder</li>
+                <li>Bequer Smith Huaman Quispe</li>
+                <li>Juan Cruz Sarasibar</li>
+            </ul>
+            <div class="footer-info">
+                <p>Introducción al desarrollo de software</p>
+                <p>12/12/2024</p>
+            </div>
+        </div>
+    </footer>  
+
+    <script>
+        function setActive(link) {
+            var items = document.querySelectorAll('.navbar-item');
+            items.forEach(function(item) {
+                item.classList.remove('active');
+            });
+
+            link.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles/home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-item active" href="index.html" onclick="setActive(this)"><img src="../assets/logotipo.jpg" alt="Logo" style="height: 40px; width: auto;"></a>
+        <a class="navbar-item" href="campeones.html" onclick="setActive(this)">Campeones</a>
+        <a class="navbar-item" href="partidas.html" onclick="setActive(this)">Partidas</a>
+        <a class="navbar-item" href="jugadores.html" onclick="setActive(this)">Jugadores</a>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <h2 class="title is-10">¿Qué hace MULTIVERSE GAMES?</h2>
+                        <div class="content" style="color: #ffffff;">
+                            <ul>
+                                <li>Crea campeones y personajes.</li>
+                                <li>Crea las habilidades de cada personaje y utilizarlas en más de 1 campeón a la vez.</li>
+                                <li>Crea partidas 5 vs 5 donde compiten los personajes de cada jugador.</li>
+                                <li>Consulta el historial partidas.</li>
+                                <li>Consulta los jugadores.</li>
+                            </ul>
+                            <p>Una plataforma para crear y gestionar tus campeones, habilidades y partidas.
+                                Llevá el control de tus enfrentamientos, consulta resultados históricos y 
+                                compartí tus logros con facilidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="carousel-container">
+                        <div id="carousel" class="carousel">
+                            <div class="carousel-item active">
+                                <img src="../assets/carrousel1.jpg" alt="Imagen carrousel 1">
+                                <div class="carousel-description">Dota 2 es un videojuego de estrategia en tiempo 
+                                    real multijugador en línea (MOBA) desarrollado por Valve Corporation. 
+                                    Los jugadores eligen héroes con habilidades únicas y compiten en equipos 
+                                    para destruir la base enemiga. Es conocido por su profundidad estratégica y 
+                                    su gran comunidad global.</div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../assets/carrousel2.jpg" alt="Imagen carrousel 2">
+                                <div class="carousel-description">League of Legends (LoL) es un videojuego de 
+                                    estrategia en tiempo real multijugador en línea (MOBA) desarrollado por 
+                                    Riot Games. Los jugadores eligen campeones con habilidades únicas y trabajan 
+                                    en equipo para destruir la base enemiga. Es famoso por su competitividad, 
+                                    profundidad estratégica y enorme base de jugadores a nivel mundial.</div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../assets/carrousel3.jpg" alt="Imagen carrousel 3">
+                                <div class="carousel-description">Dota 2 y League of Legends (LoL) son videojuegos 
+                                    MOBA donde los jugadores eligen héroes/campeones con habilidades únicas para 
+                                    destruir la base enemiga. Dota 2 destaca por su complejidad estratégica, 
+                                    mientras que LoL es conocido por su accesibilidad y enorme base de jugadores 
+                                    global.</div>
+                            </div>
+                        </div>
+                        <button id="prev" class="carousel-button left">🠸</button>
+                        <button id="next" class="carousel-button right">🠺</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <ul class="footer-names">
+                <li>Mario Schieder</li>
+                <li>Bequer Smith Huaman Quispe</li>
+                <li>Juan Cruz Sarasibar</li>
+            </ul>
+            <div class="footer-info">
+                <p>Introducción al desarrollo de software</p>
+                <p>12/12/2024</p>
+            </div>
+        </div>
+    </footer>    
+
+    <script src="../scripts/home.js"></script>
+
+    <script>
+        function setActive(link) {
+          var links = document.querySelectorAll('.navbar-item');
+          links.forEach(function(item) {
+            item.classList.remove('active');
+          });
+      
+          link.classList.add('active');
+        }
+      </script>
+
+
+</body>
+</html>
