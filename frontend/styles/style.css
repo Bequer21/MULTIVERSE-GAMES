@@ -1,0 +1,145 @@
+label{
+  padding-top:10px
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #000; /* Fondo negro para toda la página */
+  color: #fff; /* Texto blanco para todo el contenido */
+}
+.navbar {
+  background-color: #fff !important; /* Barra de navegación blanca */
+  border-radius: 0 !important; /* Quitamos el border-radius */
+}
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #000 !important; /* Letras negras en la barra */
+}
+.navbar .nav-link:hover,
+.navbar .navbar-item.active .nav-link {
+  background-color: #000 !important; /* Fondo negro al seleccionar */
+  color: #fff !important; /* Letras blancas al seleccionar */
+  border-radius: 0 !important; /* Aseguramos que no haya border-radius */
+}
+.navbar .nav-item.active .nav-link {
+  background-color: #000 !important; /* Fondo negro cuando está activo */
+  color: #fff !important; /* Letras blancas cuando está activo */
+}
+.navbar .nav-link:hover {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+/* Tarjetas */
+.card {
+  border-radius: 0 !important;
+  transition: all 0.3s ease;
+  width: 18rem; /* Fijamos un tamaño adecuado para la tarjeta */
+  margin-bottom: 20px;
+}
+.card:hover {
+  background-color: #000;
+  color: #fff;
+}
+.card-title {
+  font-weight: bold; /* Nombre en negrita */
+  transition: color 0.3s ease;
+  text-decoration: none; /* Quitar subrayado */
+}
+.card:hover .card-title {
+  color: #fff;
+}
+.modal-content {
+  background-color: #000;
+  color: #fff;
+  border-radius: 0 !important;
+}
+.modal-header .btn-close {
+  color: #fff;
+}
+/* Enlace dentro de la card que cubre toda la tarjeta */
+.card a {
+  text-decoration: none !important; /* Aseguramos que no haya subrayado en el enlace */
+  color: inherit;
+}
+/* Imagen de la tarjeta que cubra toda la tarjeta */
+.card-img-top {
+  object-fit: cover;
+  width: 100%;
+  height: 200px; /* Controlamos la altura de la imagen */
+  border-radius: 0 !important; /* Quitamos el border-radius de la imagen */
+}
+/* Flexbox para las tarjetas */
+.card-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas si es necesario */
+}
+.card.add-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+.card.add-card:hover {
+  background-color: #000;
+  color: #fff;
+}
+.card.add-card .card-body {
+  text-align: center;
+}
+.card.add-card .card-body .plus-sign {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* Modal */
+.modal-dialog {
+  width: 100%; /* Reducir al 50% del tamaño de la pantalla */
+}
+
+/* Reducir tamaño del título */
+h1 {
+  font-size: 1.5rem; /* Reducimos el tamaño del título */
+  font-weight: bold;
+}
+
+#champions-container {
+display: flex;
+flex-wrap: wrap; /* Permite que las tarjetas se ajusten a múltiples filas */
+gap: 1rem; /* Espacio entre las tarjetas */
+justify-content: flex-start; /* Alineación hacia la izquierda */
+}
+
+.card {
+width: 16rem; /* Tamaño fijo para cada tarjeta */
+margin-bottom: 20px;
+}
+
+.agregar {
+border: 2px solid #000; /* Borde negro */
+transition: background-color 0.3s ease, color 0.3s ease;
+border-radius: 0; /* Sin bordes redondeados */
+padding-top: 0;
+padding-bottom: 0;
+}
+
+
+#champions-container {
+display: flex;
+justify-content: center; /* Centra horizontalmente */
+flex-wrap: wrap; /* Permite que las cards salten a la siguiente línea si no hay espacio */
+gap: 20px; /* Espacio entre las cards */
+}
+
+#openAddAbilityModal {
+  background-color: #6f42c1; /* Violeta */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+#openAddAbilityModal:hover {
+  background-color: #5a369e;
+}
