@@ -108,6 +108,7 @@ exports.getById = async (req, res) => {
         res.json(campeon);
     } catch (error) {
         console.error('Error al obtener el campeón:', error);
+
         res.status(500).json({ error: 'Error al obtener el campeón' });
     }
 };

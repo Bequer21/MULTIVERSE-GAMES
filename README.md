@@ -336,6 +336,7 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/
               },
               "consumo_mana": 65
     }
+
   }
 
     ```
@@ -359,6 +360,7 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/1
   {
     "nombre": "Yasuo",
     "habilidad": 1,
+
     "rol": "Espadachín",
     "imagen": "garen.png",
     "historia": "Yasuo es un campeón...",
@@ -371,7 +373,7 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/1
   {
     "id_campeon": 3,
     "nombre": "Yasuo",
-    "habilidad": 1,
+    "habilidad": "Steel Tempest",
     "rol": "Espadachín",
     "imagen": "/uploads/images/yasuo.png",
     "historia": "Yasuo es un campeón...",
@@ -439,6 +441,7 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
 curl -u admin:admin123 -X PUT http://localhost:5000/campeones/1 \
   -F "nombre=Yasuo Modificado" \
   -F "habilidad=2" \
+
   -F "rol=Espadachín" \
   -F "historia=Yasuo tiene una nueva habilidad..." \
   -F "dificultad=Alta" \
@@ -541,6 +544,7 @@ curl -X GET http://localhost:5000/api/habilidades
   - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
 
 - **Ejemplo de petición con `curl`:**
+
 ```bash
 curl -X GET http://localhost:5000/api/habilidades/1
 ```
