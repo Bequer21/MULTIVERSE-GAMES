@@ -29,8 +29,13 @@ app.use(bodyParser.json());
 app.use('/jugadores', jugadoresRoutes);
 app.use('/campeones', campeonesRoutes); // Agregar las rutas de Campeones
 app.use('/habilidades', habilidadesRoutes);
+<<<<<<< HEAD:backend/app.js
 app.use('/equipos', equiposRoutes);
 app.use('/partidas', partidasRoutes);
+=======
+app.use('/api/equipos', equiposRoutes);
+
+>>>>>>> origin/develop:app.js
 app.use('/img', express.static('img'));
 
 // Inicio del servidor

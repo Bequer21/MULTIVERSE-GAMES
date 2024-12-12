@@ -336,6 +336,10 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/
               },
               "consumo_mana": 65
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
   }
 
     ```
@@ -359,6 +363,10 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/1
   {
     "nombre": "Yasuo",
     "habilidad": 1,
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
     "rol": "Espadachín",
     "imagen": "garen.png",
     "historia": "Yasuo es un campeón...",
@@ -439,6 +447,10 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
 curl -u admin:admin123 -X PUT http://localhost:5000/campeones/1 \
   -F "nombre=Yasuo Modificado" \
   -F "habilidad=2" \
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
   -F "rol=Espadachín" \
   -F "historia=Yasuo tiene una nueva habilidad..." \
   -F "dificultad=Alta" \
@@ -541,6 +553,7 @@ curl -X GET http://localhost:5000/api/habilidades
   - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
 
 - **Ejemplo de petición con `curl`:**
+
 ```bash
 curl -X GET http://localhost:5000/api/habilidades/1
 ```
