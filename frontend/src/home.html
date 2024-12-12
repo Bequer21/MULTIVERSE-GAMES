@@ -9,12 +9,10 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="#"><img src="assets/logotipo.jpg" alt="Logotipo"></a>
-            <a class="navbar-item" href="#">Campeones</a>
-            <a class="navbar-item" href="#">Partidas</a>
-            <a class="navbar-item" href="#">Jugadores</a>
-        </div>
+        <a class="navbar-item active" href="pages/pagina1.html" onclick="setActive(this)">LOGOTIPO</a>
+        <a class="navbar-item" href="pages/campeones.html" onclick="setActive(this)">Campeones</a>
+        <a class="navbar-item" href="pages/partidas.html" onclick="setActive(this)">Partidas</a>
+        <a class="navbar-item" href="pages/jugadores.html" onclick="setActive(this)">Jugadores</a>
     </nav>
 
     <section class="section">
@@ -89,6 +87,20 @@
     </footer>    
 
     <script src="js/home.js"></script>
+
+    <script>
+        function setActive(link) {
+          // Remover la clase 'active' de todos los enlaces
+          var links = document.querySelectorAll('.navbar-item');
+          links.forEach(function(item) {
+            item.classList.remove('active');
+          });
+      
+          // Añadir la clase 'active' al enlace que fue clickeado
+          link.classList.add('active');
+        }
+      </script>
+
 
 </body>
 </html>
