@@ -4,7 +4,7 @@ const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 
 let currentIndex = 0;
-const intervalTime = 6000;
+const intervalTime = 7000;
 
 function showItem(index) {
     items.forEach((item, i) => {
