@@ -7,13 +7,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Torneos</title>
     <link rel="icon" href="../../assets/duelo.jpg" type="image/jpg">
-
+    <link href="../styles/perfil.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="menu">
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="home.html">
+                <a class="navbar-item nav-link" href="home.html">
                     <img src="../../assets/home.jpg" width="40" > Dota 2 vs Lol
                 </a>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -26,18 +27,17 @@
           
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="heroes.html">HEROES </a>
+                    <a class="navbar-item nav-link" href="heroes.html">HEROES </a>
           
-                    <a class="navbar-item" href="partidas.html">PARTIDAS </a>
+                    <a class="navbar-item nav-link" href="partidas.html">PARTIDAS </a>
                     
-                    <a class="navbar-item" href="perfil.html" >JUGADORES </a>
+                    <a class="navbar-item nav-link" href="perfil.html" >JUGADORES </a>
                 </div>
           
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary"><strong>Sign up</strong></a>
-                            <a class="button is-light">Log in</a>
+                            <a class="navbar-item nav-link " ><strong>Sign up</strong></a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
-                        <button class="button is-primary" id="openModal">Agregar</button>
+                        <button class="navbar-item nav-link" id="openModal">Agregar</button>
 
                         <div class="modal" id="myModal">
                             <div class="modal-background"></div>
@@ -118,7 +118,7 @@
                                     <div class="field">
                                         <label class="label">Servidor</label>
                                         <div class="control has-icons-left has-icons-right">
-                                          <input id="servidor" class="input" type="text" >
+                                          <input id="servidor" class="input" type="text" required>
                                         </div>
                                     </div>
 
