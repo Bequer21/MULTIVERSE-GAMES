@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="../styles/style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="../assets/home.jpg" width="40" > Dota 2 vs Lol
+      </a>      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="campeones.html">Campeones</a>
+          </li>
+          <li class="nav-item active"><a class="nav-link" href="partidas.html">Partidas</a></li>
+          <li class="nav-item"><a class="nav-link" href="jugadores.html">Jugadores</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <button type="button" class="btn btn-light" style="margin-top:10px; margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#agregarPartidaModal">Agregar Partida</button>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
+          <th>Estado</th>
+          <th>Equipo 1</th>
+          <th>Equipo 2</th>
+          <th>Ganador</th>
+          <th>Acciones</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        </tbody>
+    </table>
+  </div>
+  <div class="modal fade" id="agregarPartidaModal" tabindex="-1" aria-labelledby="agregarPartidaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarPartidaModalLabel">Agregar Nueva Partida</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formulario-carga">
+            <div class="mb-3">
+              <label for="nombrePartida" class="form-label">Nombre de la Partida</label>
+              <input type="text" class="form-control" id="nombrePartida" required>
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label">DATOS DEL EQUIPO 1</label>
+              <input type="text" class="form-control" id="nombreEquipo1" placeholder="Nombre" required>
+
+              <div class="row">
+
+                <div class="col">
+                  <label for="jugador1Equipo1">Jugador 1</label>
+                  <select class="form-select" id="jugador1Equipo1" required>
+                    <option value="">Seleccione Jugador</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon1Equipo1">Campeón 1</label>
+                  <select class="form-select" id="campeon1Equipo1" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador2Equipo1">Jugador 2</label>
+                  <select class="form-select" id="jugador2Equipo1">
+                    <option value="">Seleccione Jugador</option>
+
+                  </select>
+                </div>
+                <div class="col">
+                    <label for="campeon2Equipo1">Campeón 2</label>
+                    <select class="form-select" id="campeon2Equipo1" required>
+                      <option value="">Seleccione Campeón</option>
+                    </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador3Equipo1">Jugador 3</label>
+                  <select class="form-select" id="jugador3Equipo1">
+                    <option value="">Seleccione Jugador</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon3Equipo1">Campeón 3</label>
+                  <select class="form-select" id="campeon3Equipo1" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>              
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador4Equipo1">Jugador 4</label>
+                  <select class="form-select" id="jugador4Equipo1">
+                    <option value="">Seleccione Jugador</option>
+
+                  </select>
+                </div>
+                
+                <div class="col">
+                  <label for="campeon4Equipo1">Campeón 4</label>
+                  <select class="form-select" id="campeon4Equipo1" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>                                    </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador5Equipo1">Jugador 5</label>
+                  <select class="form-select" id="jugador5Equipo1">
+                    <option value="">Seleccione Jugador</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon5Equipo1">Campeón 5</label>
+                  <select class="form-select" id="campeon5Equipo1" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>    
+                  </div>
+                </div>
+              </div>
+  
+            <div class="mb-3">
+              <label class="form-label">DATOS EQUIPO 2</label>
+              <input type="text" class="form-control" id="nombreEquipo2" placeholder="Nombre" required>
+
+              <div class="row">
+                <div class="col">
+                  <label for="jugador1Equipo2">Jugador 1</label>
+                  <select class="form-select" id="jugador1Equipo2">
+                    <option value="">Seleccione Jugador</option>
+
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon1Equipo2">Campeón 1</label>
+                  <select class="form-select" id="campeon1Equipo2" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>                    </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador2Equipo2">Jugador 2</label>
+                  <select class="form-select" id="jugador2Equipo2">
+                    <option value="">Seleccione Jugador</option>
+
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon2Equipo2">Campeón 2</label>
+                  <select class="form-select" id="campeon2Equipo2" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>                 </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador3Equipo2">Jugador 3</label>
+                  <select class="form-select" id="jugador3Equipo2">
+                    <option value="">Seleccione Jugador</option>
+
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon3Equipo2">Campeón 3</label>
+                  <select class="form-select" id="campeon3Equipo2" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>                 </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador4Equipo2">Jugador 4</label>
+                  <select class="form-select" id="jugador4Equipo2">
+                    <option value="">Seleccione Jugador</option>
+
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon4Equipo2">Campeón 4</label>
+                  <select class="form-select" id="campeon4Equipo2" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>                 </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="jugador5Equipo2">Jugador 5</label>
+                  <select class="form-select" id="jugador5Equipo2">
+                    <option value="">Seleccione Jugador</option>
+
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="campeon5Equipo2">Campeón 5</label>
+                  <select class="form-select" id="campeon5Equipo2" required>
+                    <option value="">Seleccione Campeón</option>
+                  </select>                 </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-dark" id="CrearPartida">Iniciar Partida</button>
+
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalPartida" tabindex="-1" aria-labelledby="modalPartidaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Título centrado -->
+          <h5 class="modal-title w-100 text-center" id="modalPartidaLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <!-- Tabla Equipo 1 -->
+            <div class="col">
+              <h2 id="titulo_equipo1">Equipo 1</h2>
+              <table class="table table-striped" id="tablaEquipo1">
+                <thead>
+                  <tr>
+                    <th>Jugador</th>
+                    <th>Campeón</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            
+            <!-- VS -->
+            <div class="col-1 text-center align-self-center">
+              <h2>VS</h2>
+            </div>
+            
+            <!-- Tabla Equipo 2 -->
+            <div class="col">
+              <h2 id="titulo_equipo2"></h2>
+              <table class="table table-striped" id="tablaEquipo2">
+                <thead>
+                  <tr>
+                    <th>Jugador</th>
+                    <th>Campeón</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+  
+          <!-- Botón Finalizar Partida -->
+          <div class="text-center mt-4">
+            <button class="btn btn-success" id="finalizarPartidaBtn">FINALIZAR PARTIDA</button>
+            <h5 class="resultado"></h5>
+            <h5 class="ganador"></h5>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../scripts/partidas.js"></script>
+</html>
