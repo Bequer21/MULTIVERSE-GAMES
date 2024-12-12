@@ -277,26 +277,26 @@ La API de Campeones permite gestionar información sobre los campeones del siste
 - **Respuesta exitosa (200):**  
      ```json
   [
-  {
-    "id_campeon": 1,
-    "nombre": "Garen",
-    "habilidad": "Decisive Strike",
-    "rol": "Luchador",
-    "imagen": "/uploads/images/garen.png",
-    "historia": "Garen es un campeón...",
-    "dificultad": "Media",
-    "fecha_creacion": "2024-01-01T12:00:00.000Z"
-  },
-  {
-    "id_campeon": 2,
-    "nombre": "Ahri",
-    "habilidad": "Orb of Deception",
-    "rol": "Mago",
-    "imagen": "/uploads/images/ahri.png",
-    "historia": "Ahri es una campeona...",
-    "dificultad": "Alta",
-    "fecha_creacion": "2024-01-01T12:00:00.000Z"
-  }
+      {
+          "id_campeon": 1,
+          "nombre": "Ahri",
+          "rol": "Mago",
+          "imagen": "/img/campeones/1_Ahri.jpg",
+          "historia": "Una zorra mágica que busca su humanidad.",
+          "dificultad": "Media",
+          "fecha_creacion": "2024-12-01T03:00:00.000Z",
+          "habilidad": {
+              "id": 1,
+              "nombre": "Orbe del Engaño",
+              "fuerza": 80,
+              "descripcion": "Lanza un orbe mágico que regresa al lanzador, infligiendo daño en el camino.",
+              "tiempo_enfriamiento": {
+                  "seconds": 7
+              },
+              "consumo_mana": 65
+          }
+      },
+      ...
   ]
 
     ```
@@ -321,12 +321,21 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/
   {
     "id_campeon": 1,
     "nombre": "Garen",
-    "habilidad": "Decisive Strike",
     "rol": "Luchador",
     "imagen": "/uploads/images/garen.png",
     "historia": "Garen es un campeón...",
     "dificultad": "Media",
-    "fecha_creacion": "2024-01-01T12:00:00.000Z"
+    "fecha_creacion": "2024-01-01T12:00:00.000Z",
+    "habilidad": {
+              "id": 1,
+              "nombre": "Orbe del Engaño",
+              "fuerza": 80,
+              "descripcion": "Lanza un orbe mágico que regresa al lanzador, infligiendo daño en el camino.",
+              "tiempo_enfriamiento": {
+                  "seconds": 7
+              },
+              "consumo_mana": 65
+    }
   }
 
     ```
@@ -349,7 +358,7 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/1
     ```json
   {
     "nombre": "Yasuo",
-    "habilidad": "Steel Tempest",
+    "habilidad": 1,
     "rol": "Espadachín",
     "imagen": "garen.png",
     "historia": "Yasuo es un campeón...",
@@ -362,7 +371,7 @@ curl -u admin:admin123 -X GET http://localhost:5000/campeones/1
   {
     "id_campeon": 3,
     "nombre": "Yasuo",
-    "habilidad": "Steel Tempest",
+    "habilidad": 1,
     "rol": "Espadachín",
     "imagen": "/uploads/images/yasuo.png",
     "historia": "Yasuo es un campeón...",
@@ -397,7 +406,7 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
     ```json
   {
     "nombre": "Yasuo Modificado",
-    "habilidad": "Steel Tempest Mejorado",
+    "habilidad": 2,
     "rol": "Espadachín",
     "imagen": "yasuo-modificado.png",
     "historia": "Yasuo ahora tiene una nueva habilidad...",
@@ -410,7 +419,7 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
   {
     "id_campeon": 3,
     "nombre": "Yasuo Modificado",
-    "habilidad": "Steel Tempest Mejorado",
+    "habilidad": 2,
     "rol": "Espadachín",
     "imagen": "/uploads/images/yasuo-modificado.png",
     "historia": "Yasuo ahora tiene una nueva habilidad...",
@@ -429,7 +438,7 @@ curl -u admin:admin123 -X POST http://localhost:5000/campeones \
 ```bash
 curl -u admin:admin123 -X PUT http://localhost:5000/campeones/1 \
   -F "nombre=Yasuo Modificado" \
-  -F "habilidad=Steel Tempest Mejorado" \
+  -F "habilidad=2" \
   -F "rol=Espadachín" \
   -F "historia=Yasuo tiene una nueva habilidad..." \
   -F "dificultad=Alta" \
@@ -497,6 +506,300 @@ La API Habilidades permite gestionar las habilidades de los campeones en el sist
       "consumo_mana": "40"
     }
   ]
+
+    ```
+
+- **Errores comunes:**
+  - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
+- **Ejemplo de petición con `curl`:**
+```bash
+curl -X GET http://localhost:5000/api/habilidades
+```
+
+### 2. Ver habilidad por ID
+
+- **Método:** `GET`
+- **URL:** `/habilidades/{id}`
+- **Descripción:** Obtiene la información de una habilidad específica mediante su ID.
+- **Parámetros de la URL:**
+  - `id`: El ID único del habilidad que se quiere consultar (por ejemplo, `1`).
+
+- **Respuesta exitosa (200):**
+    ```json
+  {
+    "id_habilidad": "1",
+    "nombre": "Llamarada",
+    "fuerza": "Media",
+    "descripción": "Causa daño en un área pequeña.",
+    "tiempo_enfriamiento": "5s",
+    "consumo_mana": "20"
+  }
+    ```
+
+- **Errores comunes:**
+  - **404 Not Found:** La habilidad con el `id` proporcionado no existe.
+  - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
+
+- **Ejemplo de petición con `curl`:**
+```bash
+curl -X GET http://localhost:5000/api/habilidades/1
+```
+
+### 3. Agregar habilidad
+
+- **Método:** `POST`
+- **URL:** `/habilidades`
+- **Descripción:** Agrega una nueva habilidad al sistema.
+- **Cuerpo de la solicitud:**
+    ```json
+  {
+    "nombre": "Tormenta de Hielo",
+    "fuerza": "Alta",
+    "descripción": "Congela enemigos en un área grande.",
+    "tiempo_enfriamiento": "30s",
+    "consumo_mana": "50"
+  }
+
+    ```
+
+- **Respuesta exitosa (201):**
+    ```json
+  {
+    "id_habilidad": "3",
+    "nombre": "Tormenta de Hielo",
+    "fuerza": "Alta",
+    "descripción": "Congela enemigos en un área grande.",
+    "tiempo_enfriamiento": "30s",
+    "consumo_mana": "50"
+  }
+    ```
+
+- **Errores comunes:**
+  - **400 Bad Request:** Los datos enviados no cumplen con el formato esperado o faltan campos requeridos.
+  - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
+- **Ejemplo de petición con `curl`:**
+```bash
+  curl -X POST http://localhost:5000/api/habilidades \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre": "Tormenta de Hielo",
+    "fuerza": "Alta",
+    "descripción": "Congela enemigos en un área grande.",
+    "tiempo_enfriamiento": "30s",
+    "consumo_mana": "50"
+  }'
+
+```
+### 4. Modificar habilidad
+
+- **Método:** `PUT`
+- **URL:** `/habilidades/{id}`
+- **Descripción:** Modifica la información de una habilidad existente mediante su ID.
+- **Parámetros de la URL:**
+  - `id`: El ID único del habilidad que se desea modificar.
+
+- **Cuerpo de la solicitud:**
+    ```json
+  {
+    "nombre": "Tormenta de Hielo Avanzada",
+    "fuerza": "Muy Alta",
+    "descripción": "Congela enemigos en un área más grande.",
+    "tiempo_enfriamiento": "40s",
+    "consumo_mana": "70"
+  }
+
+    ```
+
+- **Respuesta exitosa (200):**
+    ```json
+  {
+    "id_habilidad": "3",
+    "nombre": "Tormenta de Hielo Avanzada",
+    "fuerza": "Muy Alta",
+    "descripción": "Congela enemigos en un área más grande.",
+    "tiempo_enfriamiento": "40s",
+    "consumo_mana": "70"
+  }
+    ```
+
+- **Errores comunes:**
+  - **400 Bad Request:** Los datos enviados no cumplen con el formato esperado o faltan campos requeridos.
+  - **404 Not Found:** La habilidad con el `id` proporcionado no existe.
+  - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
+
+- **Ejemplo de petición con `curl`:**
+```bash
+curl -X PUT http://localhost:5000/api/habilidades/3 \
+-H "Content-Type: application/json" \
+-d '{
+  "nombre": "Tormenta de Hielo Avanzada",
+  "fuerza": "Muy Alta",
+  "descripción": "Congela enemigos en un área más grande.",
+  "tiempo_enfriamiento": "40s",
+  "consumo_mana": "70"
+}'
+
+```
+
+### 5. Eliminar Habilidad
+
+- **Método:** `DELETE`
+- **URL:** `/habilidades/{id}`
+- **Descripción:** Elimina una habilidad del sistema mediante su ID.
+- **Parámetros de la URL:**
+  - `id`: El ID único de la habilidad que se desea eliminar.
+
+- **Respuesta exitosa (200):**
+    ```json
+    {
+      "message": "Habilidad eliminada exitosamente"
+    }
+    ```
+
+- **Errores comunes:**
+  - **404 Not Found:** La habilidad con el `id` proporcionado no existe.
+  - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
+
+- **Ejemplo de petición con `curl`:**
+```bash
+curl -X DELETE http://localhost:5000/api/habilidades/3
+```
+
+# 3) API Equipos
+## Descripción
+La API Habilidades permite gestionar las habilidades de los campeones en el sistema. Cada habilidad cuenta con un identificador único y características como fuerza, descripción, tiempo de enfriamiento y consumo de maná.
+
+## Funcionalidades
+1. **Ver todas los equipos**
+2. **Ver equipo por ID**
+3. **Agregar equipo**
+4. **Modificar equipo**
+5. **Eliminar equipo**
+
+## Endpoints
+### 1. Ver todos los equipos
+
+- **Método:** GET
+- **URL:** /equipos
+- **Descripción:** Obtiene una lista de todos los equipos.
+- **Respuesta exitosa (200):**  
+     ```json
+[
+    {
+        "id_equipo": 2,
+        "nombre": "Equipo Invencible",
+        "victorias": 10,
+        "jugadores": [
+            {
+                "id_jugador": 5,
+                "nombre": "Jugador2",
+                "contrasena": "password2",
+                "email": "jugador2@example.com",
+                "fecha_creacion": "2024-01-02T16:00:00.000Z",
+                "nivel": 12,
+                "estado": "Activo",
+                "pais": "Chile",
+                "servidor": "LAS"
+            },
+            {
+                "id_jugador": 6,
+                "nombre": "Jugador3",
+                "contrasena": "password3",
+                "email": "jugador3@example.com",
+                "fecha_creacion": "2024-01-03T17:00:00.000Z",
+                "nivel": 7,
+                "estado": "Inactivo",
+                "pais": "Brasil",
+                "servidor": "NA"
+            },
+            {
+                "id_jugador": 7,
+                "nombre": "Jugador4",
+                "contrasena": "password4",
+                "email": "jugador4@example.com",
+                "fecha_creacion": "2024-01-04T18:00:00.000Z",
+                "nivel": 20,
+                "estado": "Activo",
+                "pais": "México",
+                "servidor": "LAN"
+            },
+            {
+                "id_jugador": 8,
+                "nombre": "Jugador5",
+                "contrasena": "password5",
+                "email": "jugador5@example.com",
+                "fecha_creacion": "2024-01-05T19:00:00.000Z",
+                "nivel": 15,
+                "estado": "Activo",
+                "pais": "Colombia",
+                "servidor": "LAS"
+            },
+            {
+                "id_jugador": 9,
+                "nombre": "Jugador6",
+                "contrasena": "password6",
+                "email": "jugador6@example.com",
+                "fecha_creacion": "2024-01-06T20:00:00.000Z",
+                "nivel": 22,
+                "estado": "Inactivo",
+                "pais": "Perú",
+                "servidor": "EUW"
+            }
+        ],
+        "campeones": [
+            {
+                "id_campeon": 1,
+                "nombre": "Ahri",
+                "rol": "Mago",
+                "imagen": "/img/campeones/1_Ahri.jpg",
+                "historia": "Una zorra mágica que busca su humanidad.",
+                "dificultad": "Media",
+                "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                "habilidad": 1
+            },
+            {
+                "id_campeon": 2,
+                "nombre": "Darius",
+                "rol": "Luchador",
+                "imagen": "/img/campeones/2_Darius.jpg",
+                "historia": "Un guerrero imparable que busca la gloria.",
+                "dificultad": "Alta",
+                "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                "habilidad": 2
+            },
+            {
+                "id_campeon": 3,
+                "nombre": "Ivern",
+                "rol": "Soporte",
+                "imagen": "/img/campeones/3_Ivern.jpg",
+                "historia": "Un ser que se comunica con la naturaleza y sus árboles.",
+                "dificultad": "Baja",
+                "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                "habilidad": 3
+            },
+            {
+                "id_campeon": 4,
+                "nombre": "Miss Fortune",
+                "rol": "Tirador",
+                "imagen": "/img/campeones/4_MissFortune.jpg",
+                "historia": "Una tiradora que busca venganza tras la muerte de su familia.",
+                "dificultad": "Media",
+                "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                "habilidad": 4
+            },
+            {
+                "id_campeon": 5,
+                "nombre": "Kennen",
+                "rol": "Mago",
+                "imagen": "/img/campeones/5_Kennen.jpg",
+                "historia": "Un ninja eléctrico con la habilidad de controlar tormentas.",
+                "dificultad": "Alta",
+                "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                "habilidad": 5
+            }
+        ]
+    }
+]
 
     ```
 

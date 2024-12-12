@@ -1,31 +1,118 @@
 const fs = require('fs');
 const pool = require('../config/db');
+const path = require('path');
 
 // Obtener todos los campeones
+// Obtener todos los campeones con sus habilidades completas
 exports.getAll = async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM campeones');
-        res.json(result.rows);
+        const query = `
+            SELECT 
+                c.id_campeon, 
+                c.nombre, 
+                c.rol, 
+                c.imagen, 
+                c.historia, 
+                c.dificultad, 
+                c.fecha_creacion,
+                h.id_habilidad AS habilidad_id,
+                h.nombre AS habilidad_nombre,
+                h.fuerza AS habilidad_fuerza,
+                h.descripcion AS habilidad_descripcion,
+                h.tiempo_enfriamiento AS habilidad_tiempo_enfriamiento,
+                h.consumo_mana AS habilidad_consumo_mana
+            FROM campeones c
+            LEFT JOIN habilidades h ON c.habilidad = h.id_habilidad;
+        `;
+
+        const result = await pool.query(query);
+
+        const campeones = result.rows.map(row => ({
+            id_campeon: row.id_campeon,
+            nombre: row.nombre,
+            rol: row.rol,
+            imagen: row.imagen,
+            historia: row.historia,
+            dificultad: row.dificultad,
+            fecha_creacion: row.fecha_creacion,
+            habilidad: row.habilidad_id
+                ? {
+                      id: row.habilidad_id,
+                      nombre: row.habilidad_nombre,
+                      fuerza: row.habilidad_fuerza,
+                      descripcion: row.habilidad_descripcion,
+                      tiempo_enfriamiento: row.habilidad_tiempo_enfriamiento,
+                      consumo_mana: row.habilidad_consumo_mana
+                  }
+                : null
+        }));
+
+        res.json(campeones);
     } catch (error) {
-        res.status(500).send(error.message);
+        console.error('Error al obtener campeones:', error);
+        res.status(500).json({ error: 'Error al obtener los campeones' });
     }
 };
 
-// Obtener un campeón por ID
+// Obtener un campeón por ID con su habilidad completa
 exports.getById = async (req, res) => {
     try {
         const { id } = req.params;
-        const result = await pool.query('SELECT * FROM campeones WHERE id_campeon = $1', [id]);
+
+        const query = `
+            SELECT 
+                c.id_campeon, 
+                c.nombre, 
+                c.rol, 
+                c.imagen, 
+                c.historia, 
+                c.dificultad, 
+                c.fecha_creacion,
+                h.id_habilidad AS habilidad_id,
+                h.nombre AS habilidad_nombre,
+                h.fuerza AS habilidad_fuerza,
+                h.descripcion AS habilidad_descripcion,
+                h.tiempo_enfriamiento AS habilidad_tiempo_enfriamiento,
+                h.consumo_mana AS habilidad_consumo_mana
+            FROM campeones c
+            LEFT JOIN habilidades h ON c.habilidad = h.id_habilidad
+            WHERE c.id_campeon = $1;
+        `;
+
+        const result = await pool.query(query, [id]);
 
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Campeón no encontrado' });
         }
 
-        res.json(result.rows[0]);
+        const row = result.rows[0];
+        const campeon = {
+            id_campeon: row.id_campeon,
+            nombre: row.nombre,
+            rol: row.rol,
+            imagen: row.imagen,
+            historia: row.historia,
+            dificultad: row.dificultad,
+            fecha_creacion: row.fecha_creacion,
+            habilidad: row.habilidad_id
+                ? {
+                      id: row.habilidad_id,
+                      nombre: row.habilidad_nombre,
+                      fuerza: row.habilidad_fuerza,
+                      descripcion: row.habilidad_descripcion,
+                      tiempo_enfriamiento: row.habilidad_tiempo_enfriamiento,
+                      consumo_mana: row.habilidad_consumo_mana
+                  }
+                : null
+        };
+
+        res.json(campeon);
     } catch (error) {
+        console.error('Error al obtener el campeón:', error);
         res.status(500).json({ error: 'Error al obtener el campeón' });
     }
 };
+
 
 // Crear un nuevo campeón
 exports.create = async (req, res) => {
@@ -33,20 +120,6 @@ exports.create = async (req, res) => {
         const { nombre, habilidad, rol, historia, dificultad } = req.body;
         let imagenUrl = null;
 
-        // Verificar si ya existe un campeón con el mismo nombre
-        const checkNombreResult = await pool.query(
-            'SELECT * FROM campeones WHERE nombre = $1',
-            [nombre]
-        );
-
-        // Si el campeón ya existe, no se guarda la imagen y se responde con un error
-        if (checkNombreResult.rows.length > 0) {
-            // Si hay un archivo en la solicitud, eliminamos la imagen que no debe guardarse
-            if (req.file) {
-                fs.unlinkSync(`img/campeones/${req.file.filename}`); // Eliminar archivo subido
-            }
-            return res.status(400).json({ error: 'Ya existe un campeón con ese nombre' });
-        }
 
         // Si hay un archivo, generamos la URL de la imagen
         if (req.file) {
@@ -94,14 +167,49 @@ exports.update = async (req, res) => {
     try {
         const { id } = req.params;
         const { nombre, habilidad, rol, historia, dificultad } = req.body;
-        const imagenUrl = req.file ? `/img/campeones/${id}_${nombre.replace(/\s+/g, '_')}.jpg` : null;
 
+        // Obtener la información actual del campeón para identificar la imagen anterior
+        const existingChampion = await pool.query(
+            `SELECT imagen FROM campeones WHERE id_campeon = $1`,
+            [id]
+        );
+
+        if (existingChampion.rows.length === 0) {
+            return res.status(404).json({ error: 'Campeón no encontrado' });
+        }
+
+        let imagenUrl = existingChampion.rows[0].imagen; // Mantener la URL existente si no hay archivo nuevo
+
+        // Si se carga un nuevo archivo
+        if (req.file) {
+            // Generar el nuevo nombre de archivo
+            const nuevoNombre = `${id}_${nombre.replace(/\s+/g, '_')}.jpg`;
+            const oldPath = `img/campeones/${req.file.filename}`;
+            const newPath = `img/campeones/${nuevoNombre}`;
+
+            // Renombrar el archivo subido
+            fs.renameSync(oldPath, newPath);
+
+            // Actualizar la URL de la imagen
+            imagenUrl = `/img/campeones/${nuevoNombre}`;
+
+            // Eliminar la imagen anterior si existía y es diferente a la actual
+            const imagenAnterior = existingChampion.rows[0].imagen;
+            if (imagenAnterior && imagenAnterior !== imagenUrl) {
+                const imagenAnteriorPath = path.join(__dirname, '..', imagenAnterior);
+                if (fs.existsSync(imagenAnteriorPath)) {
+                    fs.unlinkSync(imagenAnteriorPath);
+                }
+            }
+        }
+
+        // Actualizar los datos del campeón en la base de datos
         const result = await pool.query(
             `UPDATE campeones SET 
             nombre = $1, 
             habilidad = $2, 
             rol = $3, 
-            imagen = COALESCE($4, imagen), 
+            imagen = $4, 
             historia = $5, 
             dificultad = $6 
             WHERE id_campeon = $7 RETURNING *`,
@@ -114,10 +222,11 @@ exports.update = async (req, res) => {
 
         res.json(result.rows[0]);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: 'Error al actualizar el campeón' });
+        console.log(result)
     }
 };
-
 // Eliminar un campeón
 exports.remove = async (req, res) => {
     try {
