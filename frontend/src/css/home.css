@@ -1,9 +1,35 @@
+@keyframes gradient-animation {
+    0% {
+        border-image-source: linear-gradient(90deg, #004eae, #ff5a00);
+    }
+    50% {
+        border-image-source: linear-gradient(180deg, #d52b1e, #0073ff);
+    }
+    100% {
+        border-image-source: linear-gradient(360deg, #004eae, #ff5a00);
+    }
+}
+
 .box {
     background-color: white;
     border: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #004eae, #ff5a00);
+    animation: gradient-animation 5s infinite;
     padding: 20px;
     width: 400px;
-    color: rgb(255, 196, 0);
+    color: black;
+}
+
+.box {
+    background-color: white;
+    border: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #004eae, #ff5a00);
+    animation: gradient-animation 5s infinite;
+    padding: 20px;
+    width: 400px;
+    color: black;
 }
 
 .box h2 {
@@ -84,6 +110,47 @@
 
 .carousel-button:hover {
     opacity: 1;
+}
+
+.footer {
+    padding: 20px 0;
+    background-color: hsl(240, 20%, 6%);
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-names {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-names li {
+    margin-bottom: 5px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-info p {
+        padding-left: 0;
+    }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
