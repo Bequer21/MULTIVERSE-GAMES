@@ -18,3 +18,5 @@ Thumbs.db
 # Cache y archivos temporales
 .cache/
 *.log
+
+.html
