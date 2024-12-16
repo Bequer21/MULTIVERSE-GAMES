@@ -24,6 +24,8 @@ services:
       - "3000:3000"
     networks:
       - app_network
+    volumes:
+      - ./app:/src
 
   db:
     image: postgres:latest

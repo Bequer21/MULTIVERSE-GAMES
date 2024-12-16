@@ -1,8 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './home.css';
-import App from './App';
-
 const carousel = document.getElementById('carousel');
 const items = carousel.querySelectorAll('.carousel-item');
 const prevButton = document.getElementById('prev');
@@ -33,10 +28,3 @@ prevButton.addEventListener('click', prevItem);
 showItem(currentIndex);
 
 setInterval(nextItem, intervalTime);
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);

@@ -1,0 +1,90 @@
+* {
+    color-scheme: light dark !important; /* Habilita soporte para ambos modos */
+    -webkit-text-fill-color: inherit !important; /* Para Chrome */
+    forced-color-adjust: none !important; /* Evita ajustes de colores forzados */
+}
+
+label {
+    padding-top: 10px !important;
+}
+
+html, body {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Estilos generales para el body */
+body {
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #22252b !important; /* Fondo oscuro (gris) como en CSS 1 */
+    color: white !important; /* Texto blanco */
+}
+
+.nav-link,
+.navbar-item {
+    color: rgb(0, 0, 0) !important; /* Letras negras en la barra */
+}
+
+.nav-link:hover,
+.navbar-item.active .nav-link {
+    background-color: #000 !important; /* Fondo negro al seleccionar */
+    color: #fff !important; /* Letras blancas al seleccionar */
+    border-radius: 0 !important; /* Aseguramos que no haya border-radius */
+}
+
+.modal-background {
+    background-color: rgba(0, 0, 0, 0.7) !important; /* Fondo oscuro con opacidad para la capa de fondo */
+}
+
+/* Estilo principal del modal */
+.modal-content-margin-mobile {
+    background-color: rgb(51, 51, 51) !important; /* Fondo gris oscuro del modal como en CSS 1 */
+    border-radius: 8px !important; /* Bordes redondeados */
+    padding: 20px !important; /* Espaciado interno */
+    max-width: 500px !important; /* Ancho máximo del modal */
+    width: 90% !important; /* El modal ocupará el 90% del ancho de la pantalla en pantallas pequeñas */
+    max-height: 80vh !important; /* Altura máxima relativa a la ventana */
+    overflow-y: auto !important; /* Permite desplazarse si el contenido excede el tamaño máximo */
+    margin: 30px auto !important; /* Centra el modal y agrega espacio en la parte superior */
+}
+
+/* Asegura que las etiquetas sean visibles y legibles */
+.modal-content-margin-mobile .label {
+    color: #fff !important; /* Establece el color blanco para las etiquetas */
+    font-weight: bold !important; /* Hace que las etiquetas sean más visibles */
+    margin-bottom: 10px !important; /* Añade un poco de espacio debajo de las etiquetas */
+}
+
+/* Ajustes a los campos para que se vean bien */
+.modal-content-margin-mobile .control input {
+    background-color: #444 !important; /* Fondo oscuro para los inputs */
+    color: #fff !important; /* Texto blanco para los inputs */
+    border: 1px solid #fff !important; /* Borde blanco para los inputs */
+    border-radius: 4px !important; /* Bordes redondeados */
+    padding: 8px !important; /* Espaciado interno para los inputs */
+    width: 100% !important; /* Asegura que los inputs ocupen todo el ancho disponible */
+}
+
+/* Ajustes de los íconos dentro de los inputs */
+.modal-content-margin-mobile .control .icon {
+    color: #fff !important; /* Asegura que los íconos sean blancos */
+}
+
+/* Ajustes responsivos para pantallas pequeñas (menos de 576px) */
+@media screen and (max-width: 576px) {
+    .modal-content-margin-mobile {
+        width: 95% !important; /* El modal ocupará el 95% del ancho de la pantalla */
+        max-height: 90vh !important; /* La altura máxima será el 90% de la altura de la ventana */
+    }
+    
+    /* Hace que las etiquetas tengan un mayor espacio */
+    .modal-content-margin-mobile .label {
+        font-size: 1rem !important; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
+    }
+
+    /* Hace que los inputs se vean bien en pantallas pequeñas */
+    .modal-content-margin-mobile .control input {
+        font-size: 1rem !important; /* Ajusta el tamaño de la fuente dentro de los inputs */
+    }
+}

@@ -21,6 +21,11 @@ Este proyecto está basado en Node.js. Antes de ejecutarlo, necesitas instalar t
 npm install
 ```
 
+En la carpeta del frontend ademas del anterior ejecutar:
+```bash
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
+```
+
 ### 3. Configurar variables de entorno
 
 Crea un archivo .env en la raíz del proyecto y agrega las variables de entorno necesarias, como la conexión a la base de datos PostgreSQL. Cómo debería estar confeccionado para su funcionamiento:

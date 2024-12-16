@@ -1,183 +1,106 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+<div id="root"></div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>Torneos</title>
-    <link rel="icon" href="../../assets/duelo.jpg" type="image/jpg">
-
+    <title>MG - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="../src/home.css">
+    <link rel="icon" href="duelo.jpg" type="image/jpg">
 </head>
 <body>
-    <div class="menu">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="home.html">
-                    <img src="../../assets/home.jpg" width="40" > Dota 2 vs Lol
-                </a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-          
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="heroes.html">HEROES </a>
-          
-                    <a class="navbar-item" href="partidas.html">PARTIDAS </a>
-                    
-                    <a class="navbar-item" href="perfil.html" >JUGADORES </a>
-                </div>
-          
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary"><strong>Sign up</strong></a>
-                            <a class="button is-light">Log in</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
+    <nav class="navbar">
+        <a class="navbar-item active" href="index.html" onclick="setActive(this)"><img src="logotipo.jpg" alt="Logo" style="height: 40px; width: auto;"></a>
+        <a class="navbar-item" href="campeones.html" onclick="setActive(this)">Campeones</a>
+        <a class="navbar-item" href="partidas.html" onclick="setActive(this)">Partidas</a>
+        <a class="navbar-item" href="jugadores.html" onclick="setActive(this)">Jugadores</a>
+    </nav>
+
     <section class="section">
-        <div class="menu">
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <h2>Gestion de Jugadores</h2>
-                </div>
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <button class="button is-primary" id="openModal">Agregar</button>
-
-                        <div class="modal" id="myModal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content-margin-mobile">
-                                <form>
-                                    <div class="field">
-                                        <label class="label">Nombre</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input class="input" type="text" >
-                                          <span class="icon is-small is-left">
-                                            <i class="fas fa-user"></i>
-                                          </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="field">
-                                        <label class="label">Contraseña</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input class="input is-success" type="text"  >
-                                          <span class="icon is-small is-left">
-                                            <i class="fas fa-user"></i>
-                                          </span>
-                                          <span class="icon is-small is-right">
-                                            <i class="fas fa-check"></i>
-                                          </span>
-                                        </div>
-                                        <p class="help is-success">This username is available</p>
-                                    </div>
-                                      
-                                    <div class="field">
-                                        <label class="label">Email</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input class="input is-danger" type="email" placeholder="Email">
-                                          <span class="icon is-small is-left">
-                                            <i class="fas fa-envelope"></i>
-                                          </span>
-                                          <span class="icon is-small is-right">
-                                            <i class="fas fa-exclamation-triangle"></i>
-                                          </span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="field">
-                                        <label class="label">Pais</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input class="input" type="text" >
-                                        </div>
-                                    </div>
-
-                                    <div class="field">
-                                        <label class="label">Nivel</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input class="input" type="text" >
-                                        </div>
-                                    </div>
-
-                                    <div class="field">
-                                        <label class="label">Servidor</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input class="input" type="text" >
-                                        </div>
-                                    </div>
-
-                                    <section class="section">
-                                        <button class="button is-info is-light">Guardar</button>
-                                    </section>
-                                </form>
-                            </div>
-                            <button class="modal-close is-large" aria-label="close" id="closeModal"></button>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <h2 class="title is-10">¿Qué hace MULTIVERSE GAMES?</h2>
+                        <div class="content" style="color: #ffffff;">
+                            <ul>
+                                <li>Crea campeones y personajes.</li>
+                                <li>Crea las habilidades de cada personaje y utilizarlas en más de 1 campeón a la vez.</li>
+                                <li>Crea partidas 5 vs 5 donde compiten los personajes de cada jugador.</li>
+                                <li>Consulta el historial partidas.</li>
+                                <li>Consulta los jugadores.</li>
+                            </ul>
+                            <p>Una plataforma para crear y gestionar tus campeones, habilidades y partidas.
+                                Llevá el control de tus enfrentamientos, consulta resultados históricos y 
+                                compartí tus logros con facilidad.</p>
                         </div>
-                        <script>
-                            const openModalBtn = document.getElementById('openModal');
-                            const closeModalBtn = document.getElementById('closeModal');
-                            const modal = document.getElementById('myModal');
-
-                            openModalBtn.addEventListener('click', function() {
-                                modal.classList.add('is-active');
-                            });
-
-                            closeModalBtn.addEventListener('click', function() {
-                                modal.classList.remove('is-active'); 
-                            });
-
-                            modal.querySelector('.modal-background').addEventListener('click', function() {
-                                modal.classList.remove('is-active');  // Cerrar el modal cuando se hace clic fuera del modal
-                            });
-                        </script>
                     </div>
                 </div>
-            </nav>
+
+                <div class="column">
+                    <div class="carousel-container">
+                        <div id="carousel" class="carousel">
+                            <div class="carousel-item active">
+                                <img src="carrousel1.jpg" alt="Imagen carrousel 1">
+                                <div class="carousel-description">Dota 2 es un videojuego de estrategia en tiempo 
+                                    real multijugador en línea (MOBA) desarrollado por Valve Corporation. 
+                                    Los jugadores eligen héroes con habilidades únicas y compiten en equipos 
+                                    para destruir la base enemiga. Es conocido por su profundidad estratégica y 
+                                    su gran comunidad global.</div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="carrousel2.jpg" alt="Imagen carrousel 2">
+                                <div class="carousel-description">League of Legends (LoL) es un videojuego de 
+                                    estrategia en tiempo real multijugador en línea (MOBA) desarrollado por 
+                                    Riot Games. Los jugadores eligen campeones con habilidades únicas y trabajan 
+                                    en equipo para destruir la base enemiga. Es famoso por su competitividad, 
+                                    profundidad estratégica y enorme base de jugadores a nivel mundial.</div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="carrousel3.jpg" alt="Imagen carrousel 3">
+                                <div class="carousel-description">Dota 2 y League of Legends (LoL) son videojuegos 
+                                    MOBA donde los jugadores eligen héroes/campeones con habilidades únicas para 
+                                    destruir la base enemiga. Dota 2 destaca por su complejidad estratégica, 
+                                    mientras que LoL es conocido por su accesibilidad y enorme base de jugadores 
+                                    global.</div>
+                            </div>
+                        </div>
+                        <button id="prev" class="carousel-button left">🠸</button>
+                        <button id="next" class="carousel-button right">🠺</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th><abbr title="Position">Orden</abbr></th>
-                <th><abbr title="Played">Estado</abbr></th>
-                <th><abbr title="Won">Jugador</abbr></th>
-                <th><abbr title="Drawn">Email</abbr></th>
-                <th><abbr title="Lost">Pais</abbr></th>
-                <th><abbr title="Goals for">Nivel</abbr></th>
-                <th><abbr title="Goals against">Servidor</abbr></th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr> 
-                  <th>1</th>
-                  <td>Activo</td>
-                  <td>Pepito</td>
-                  <td>Pepito@fi.uba.ar</td>
-                  <td>Argentina</td>
-                  <td>35</td>
-                  <td>EE.UU</td>
-                  <td>
-                    <button class="btn-danger" >
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="button is-danger is-light">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-            </tbody>
-        </table>
     </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <ul class="footer-names">
+                <li>Mario Schieder</li>
+                <li>Bequer Smith Huaman Quispe</li>
+                <li>Juan Cruz Sarasibar</li>
+            </ul>
+            <div class="footer-info">
+                <p>Introducción al desarrollo de software</p>
+                <p>12/12/2024</p>
+            </div>
+        </div>
+    </footer>    
+
+    <script src="../src/index.js"></script>
+
+    <script>
+        function setActive(link) {
+          var links = document.querySelectorAll('.navbar-item');
+          links.forEach(function(item) {
+            item.classList.remove('active');
+          });
+      
+          link.classList.add('active');
+        }
+      </script>
+
+
 </body>
 </html>
