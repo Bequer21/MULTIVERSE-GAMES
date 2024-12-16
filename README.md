@@ -47,7 +47,7 @@ Con esta preconfiguración ya se puede probar con diferentes endpoints de la API
 
 Por ejemplo, para ver todos los jugadores:
 ```bash
-curl -u admin:admin123 -X GET http://localhost:3000/jugadores
+curl -u admin:admin123 -X GET http://localhost:5000/jugadores
 ```
 # 1) API Jugadores
 ## Descripción
@@ -95,7 +95,7 @@ La API de Jugadores permite gestionar información sobre los jugadores de un sis
   - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
 - **Ejemplo de petición con `curl`:**
 ```bash
-curl -u admin:admin123 -X GET http://localhost:3000/jugadores/
+curl -u admin:admin123 -X GET http://localhost:5000/jugadores/
 ```
 
 ### 2. Ver jugador por ID
@@ -126,7 +126,7 @@ curl -u admin:admin123 -X GET http://localhost:3000/jugadores/
 
 - **Ejemplo de petición con `curl`:**
 ```bash
-curl -u admin:admin123 -X GET http://localhost:3000/jugadores/1
+curl -u admin:admin123 -X GET http://localhost:5000/jugadores/1
 ```
 
 ### 3. Agregar jugador
@@ -166,7 +166,7 @@ curl -u admin:admin123 -X GET http://localhost:3000/jugadores/1
   - **401 Unauthorized:** No se ha proporcionado una autenticación válida.
 - **Ejemplo de petición con `curl`:**
 ```bash
-curl -u admin:admin123 -X POST http://localhost:3000/jugadores \
+curl -u admin:admin123 -X POST http://localhost:5000/jugadores \
   -H "Content-Type: application/json" \
   -d '{
     "nombre": "Nuevo Jugador",
@@ -220,7 +220,7 @@ curl -u admin:admin123 -X POST http://localhost:3000/jugadores \
 
 - **Ejemplo de petición con `curl`:**
 ```bash
-curl -u admin:admin123 -X PUT http://localhost:3000/jugadores/1 \
+curl -u admin:admin123 -X PUT http://localhost:5000/jugadores/1 \
   -H "Content-Type: application/json" \
   -d '{
     "nombre": "Mario Schieder Modificado",
@@ -254,7 +254,7 @@ curl -u admin:admin123 -X PUT http://localhost:3000/jugadores/1 \
 
 - **Ejemplo de petición con `curl`:**
 ```bash
-curl -u admin:admin123 -X DELETE http://localhost:3000/jugadores/1
+curl -u admin:admin123 -X DELETE http://localhost:5000/jugadores/1
 ```
 
 # 2) API Campeones
