@@ -1,17 +1,11 @@
-FROM node:18
+# Usa la imagen base de Nginx
+FROM nginx:latest
 
-WORKDIR /usr/src/app
+# Copia los archivos de configuración personalizados de Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY package*.json ./
+# Copia todos los archivos de tu frontend
+COPY /public /usr/share/nginx/html
 
-# instala las dependencias del frontend
-RUN npm install
-
-# copia el resto del código del frontend
-COPY . .
-
-# puerto en el que corre el servidor de desarrollo del frontend
+# Expone el puerto 3000
 EXPOSE 3000
-
-# iniciar el servidor de desarrollo
-CMD ["npm", "start"]

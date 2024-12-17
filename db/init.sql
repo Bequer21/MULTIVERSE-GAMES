@@ -27,7 +27,7 @@ CREATE TABLE campeones (
     nombre VARCHAR(50) NOT NULL,
     habilidad INT NOT NULL,
     rol VARCHAR(50),
-    imagen_campeon VARCHAR(50),
+    imagen VARCHAR(50),
     historia VARCHAR(200),
     dificultad VARCHAR(50),
     fecha_creacion DATE DEFAULT CURRENT_DATE,
