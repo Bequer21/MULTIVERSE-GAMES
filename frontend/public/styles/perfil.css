@@ -10,12 +10,18 @@ html, body {
 /* Estilos generales para el body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #000; /* Fondo negro */
-    color: #fff; /* Texto blanco */
+    background-color: #22252b; /* Fondo negro */
+    color: #000000; /* Texto blanco */
 }
 .nav-link,
+
+.navbar {
+    background-color: transparent; /* Permite heredar el fondo blanco de .menu */
+}
+
 .navbar-item {
     color: #000 !important; /* Letras negras en la barra */
+    background-color: #fff;
 }
 .nav-link:hover,
 .navbar-item.active .nav-link {
@@ -24,8 +30,9 @@ body {
     border-radius: 0 !important; /* Aseguramos que no haya border-radius */
 }
 
-
-
+.menu {
+    background-color: #ffffff; /* Fondo blanco */
+}
 
 .modal-background {
     background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad para la capa de fondo */
