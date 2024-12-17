@@ -24,10 +24,10 @@ CREATE TABLE habilidades (
 -- tabla campeones
 CREATE TABLE campeones (
     id_campeon SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
     habilidad INT NOT NULL,
     rol VARCHAR(50),
-    imagen VARCHAR(50),
+    imagen VARCHAR(255),
     historia VARCHAR(200),
     dificultad VARCHAR(50),
     fecha_creacion DATE DEFAULT CURRENT_DATE,
@@ -71,8 +71,7 @@ CREATE TABLE partidas (
     estado VARCHAR(20),
     equipo_1 INT NOT NULL,
     equipo_2 INT NOT NULL,
-    ganador INT,
+    ganador VARCHAR(100),
     CONSTRAINT fk_equipo1 FOREIGN KEY (equipo_1) REFERENCES equipos(id_equipo) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_equipo2 FOREIGN KEY (equipo_2) REFERENCES equipos(id_equipo) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_ganador FOREIGN KEY (ganador) REFERENCES equipos(id_equipo) ON DELETE CASCADE ON UPDATE CASCADE
 );
