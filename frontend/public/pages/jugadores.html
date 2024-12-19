@@ -47,7 +47,7 @@
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
-                        <button class="navbar-item nav-link" id="openModal">Agregar</button>
+                        <button class="navbar-item nav-link" id="openModal" onclick="restaurar()">Agregar</button>
 
                         <div class="modal" id="myModal">
                             <div class="modal-background"></div>
@@ -123,8 +123,8 @@
                                     </select> 
                                   </div>
                                     
-                                    <button class="button is-info is-light" onclick="crearJugador()">Guardar</button>
-                                    <button class="button is-info is-light" onclick="editar(event)">Editar</button>
+                                  <button id="guardar" class="button is-info is-light" onclick="crearJugador()">Guardar</button>
+                                  <button id="edit" class="button is-info is-light" onclick="editar(event)">Editar</button>
                                 </form>
                             </div>
                             <button class="modal-close is-large" aria-label="close" id="closeModal"></button>
