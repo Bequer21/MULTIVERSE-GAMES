@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MG - Campeones</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/duelo.jpg" type="image/jpg">
+
+  <link rel="stylesheet" href="../styles/campeones-partidas.css">
+</head>
+<body>
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">
+        <img src="../assets/home.jpg" width="40" > Dota 2 vs Lol
+      </a>      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="campeones.html">Campeones</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="partidas.html">Partidas</a></li>
+          <li class="nav-item"><a class="nav-link" href="jugadores.html">Jugadores</a></li>
+          <li class="nav-item"><a class="nav-link" href="habilidades.html">Habilidades</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <div class="container my-5">
+    <h1 class="mb-4">ELIGE QUIEN TE LLEVARÁ A LA VICTORIA...</h1> <!-- Título reducido en tamaño -->
+    
+
+      
+<!-- Card de Agregar Campeón -->
+<div class="container">
+  <button class="btn btn-light text-black w-100 fs-4 agregar" id="agregarCampeon" data-bs-toggle="modal" data-bs-target="#addChampionModal">
+    <div>+</div>
+    <p>Agregar Campeón</p>
+  </button>
+</div>
+    
+  </div>
+
+  <!-- MODAL PARA VER DETALLES-->
+  <div class="modal fade" id="championModal" tabindex="-1" aria-labelledby="championModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="championModalLabel">Detalles del Campeón</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="championDetails">
+            <img id="modal-champion-image" class="img-fluid w-100" alt="Imagen del Campeón">
+            <p><strong>Nombre:</strong> <span id="modal-champion-name"></span></p>
+            <p><strong>Historia:</strong> <span id="modal-champion-history"></span></p>
+            <p><strong>Habilidad:</strong> <span id="modal-champion-ability"></span></p>
+            <p><strong>Rol:</strong> <span id="modal-champion-role"></span></p>
+            <p><strong>Dificultad:</strong> <span id="modal-champion-difficulty"></span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="editChampionButton" class="btn btn-dark">Editar</button>
+          <button type="button" id="deleteChampionButton" class="btn btn-danger">Borrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL PARA VER EDITAR-->
+  <div class="modal fade" id="championModaledit"  tabindex="-1" aria-labelledby="championModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="championModalLabel">Editar Campeón</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="championedit" >
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal para Agregar Campeón -->
+<div class="modal fade" id="addChampionModal" tabindex="-1" aria-labelledby="addChampionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addChampionModalLabel">Agregar Campeón</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addChampionForm" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="championName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="championName" name="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="championHistory" class="form-label">Historia</label>
+            <textarea class="form-control" id="championHistory" name="historia" rows="3" required></textarea>
+          </div>
+
+          
+          <div class="mb-3">
+            <label for="championAbility" class="form-label">Habilidad</label>
+            <button type="button" class="btn btn-sm btn-warning" id="openAddAbilityModal" style="margin-left: 10px;">Agregar Habilidad</button>
+            <select class="form-select" id="championAbility" name="habilidad" required>
+              <option value="" disabled selected>Selecciona una habilidad</option>
+              <!-- Opciones dinámicas -->
+            </select>
+
+          <!-- Campos para mostrar los atributos de la habilidad -->
+          <div id="abilityAttributes" style="display:none; padding-top:10px" >
+            <div class="mb-3">
+              <strong>Descripción: </strong>
+              <span id="abilityDescription"> </span>
+            </div>
+            <div class="mb-3">
+              <strong>Fuerza: </strong>
+              <span id="abilityStrength"> </span>
+
+        </div>
+            <div class="mb-3">
+              <strong>CoolDown: </strong>
+              <span id="abilityCooldown"> </span>
+
+            </div>
+            <div class="mb-3">
+              <strong>Consumo de Mana: </strong>
+              <span id="abilityManaCost"> </span>
+            </div>
+          </div>
+          </div>
+          <div class="mb-3">
+            <label for="championRole" class="form-label">Rol</label>
+            <select class="form-select" class="form-control" id="championRole" name="rol" required>
+              <option value="" disabled selected>Selecciona Rol</option>
+              <option value="Tirador">Tirador</option>
+              <option value="Mago">Mago</option>
+              <option value="Luchador">Luchador</option>
+              <option value="Asesino">Asesino</option>
+              <option value="Tanque">Tanque</option>
+              <option value="Soporte">Soporte</option>
+            </select>
+          </div>
+    
+          <div class="mb-3">
+            <label for="championDifficulty" class="form-label">Dificultad</label>
+            <select class="form-select" id="championDifficulty" name="dificultad" required>
+              <option value="" disabled selected>Selecciona la dificultad</option>
+              <option value="Baja">Baja</option>
+              <option value="Media">Media</option>
+              <option value="Alta">Alta</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="championImage" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="championImage" name="imagen" accept="image/*" required>
+          </div>
+          <button type="submit" class="btn btn-dark w-100">Agregar Campeón</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--- MODAL PARA AGREGAR HABILIDAD -->
+<div class="modal fade" id="addAbilityModal" tabindex="-1" aria-labelledby="addAbilityModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addAbilityModalLabel">Agregar Habilidad</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addAbilityForm">
+          <div class="mb-3">
+            <label for="abilityName" class="form-label">Nombre Habilidad</label>
+            <input type="text" class="form-control" id="abilityName" name="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="abilityDescription" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="abilityDescriptionInput" name="descripcion" required>
+          </div>
+          <div class="mb-3">
+            <label for="abilityStrength" class="form-label">Fuerza</label>
+            <input type="text" class="form-control" id="abilityStrengthInput" name="fuerza" required>
+          </div>
+          <div class="mb-3">
+            <label for="abilityCooldown" class="form-label">Tiempo de Enfriamiento</label>
+            <input type="text" class="form-control" id="abilityCooldownInput" name="tiempo_enfriamiento" required>
+          </div>
+          <div class="mb-3">
+            <label for="abilityManaCost" class="form-label">Consumo de Mana</label>
+            <input type="text" class="form-control" id="abilityManaCostInput" name="consumo_mana" required>
+          </div>
+          <button type="submit" class="btn btn-danger w-100">Agregar Habilidad</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>   
+
+  <div class="container mt-5" id="champions-container">
+  </div>
+  
+  <footer>
+  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="margin-bottom: 5px;">Mario Schieder</li>
+            <li style="margin-bottom: 5px;">Bequer Smith Huaman Quispe</li>
+            <li style="margin-bottom: 5px;">Juan Cruz Sarasibar</li>
+        </ul>
+        <div>
+            <p style="margin: 5px 0; padding-left: 20px;">Introducción al desarrollo de software</p>
+            <p style="margin: 5px 0; padding-left: 20px;">19/12/2024</p>
+        </div>
+    </div>
+  </footer> 
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="../src/campeones.js"></script>
+  
+</body>
+</html>

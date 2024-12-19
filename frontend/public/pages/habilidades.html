@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MG - Habilidades</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/habilidades.css">
+<link rel="icon" href="../assets/duelo.jpg" type="image/jpg">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html">
+            <img src="../assets/home.jpg" width="40" > Dota 2 vs Lol
+          </a>      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="campeones.html">Campeones</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="partidas.html">Partidas</a></li>
+              <li class="nav-item"><a class="nav-link" href="jugadores.html">Jugadores</a></li>
+              <li class="nav-item active"><a class="nav-link" href="habilidades.html">Habilidades</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+<div class="container">
+
+    <div class="mb-4">
+        <button class="btn btn-violet" data-bs-toggle="modal" data-bs-target="#addHabilidadModal" onclick="resetForm()">Agregar Habilidad</button>
+    </div>
+    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Buscar habilidad por nombre" onkeyup="searchHabilidades()">    <!-- Tabla de habilidades -->
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fuerza</th>
+                <th>Tiempo de Enfriamiento</th>
+                <th>Consumo Mana</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="habilidadesContainer">
+            <!-- Aquí se llenarán las habilidades -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal para agregar o editar habilidad -->
+<div class="modal fade" id="addHabilidadModal" tabindex="-1" aria-labelledby="addHabilidadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addHabilidadModalLabel">Agregar Nueva Habilidad</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="habilidadForm">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fuerza" class="form-label">Fuerza</label>
+                        <input type="text" class="form-control" id="fuerza" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tiempo_enfriamiento" class="form-label">Tiempo de Enfriamiento</label>
+                        <input type="text" class="form-control" id="tiempo_enfriamiento" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="consumo_mana" class="form-label">Consumo de Mana</label>
+                        <input type="number" class="form-control" id="consumo_mana" required>
+                    </div>
+                    <button type="submit" class="btn btn-violet">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación de eliminación -->
+<div class="modal fade" id="deleteHabilidadModal" tabindex="-1" aria-labelledby="deleteHabilidadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteHabilidadModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que quieres eliminar esta habilidad?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <ul style="margin: 0; padding: 0; list-style: none;">
+        <li style="margin-bottom: 5px;">Mario Schieder</li>
+        <li style="margin-bottom: 5px;">Bequer Smith Huaman Quispe</li>
+        <li style="margin-bottom: 5px;">Juan Cruz Sarasibar</li>
+    </ul>
+    <div>
+        <p style="margin: 5px 0; padding-left: 20px;">Introducción al desarrollo de software</p>
+        <p style="margin: 5px 0; padding-left: 20px;">19/12/2024</p>
+    </div>
+</div>
+</footer> 
+<!-- Scripts de Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Tu script de JS -->
+<script src="../src/habilidades.js"></script>
+
+</body>
+</html>
