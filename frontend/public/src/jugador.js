@@ -1,6 +1,7 @@
 const openModalBtn = document.getElementById('openModal');
 const closeModalBtn = document.getElementById('closeModal');
 const modal = document.getElementById('myModal');
+const modalBackground = modal.querySelector('.modal-background');
 
 openModalBtn.addEventListener('click', function() {
     modal.classList.add('is-active');
@@ -8,13 +9,15 @@ openModalBtn.addEventListener('click', function() {
 });
 
 closeModalBtn.addEventListener('click', function() {
-    modal.classList.remove('is-active'); 
+    modal.classList.remove('is-active');
     limpiarModal();
 });
 
-modal.querySelector('.modal-background').addEventListener('click', function() {
-    modal.classList.remove('is-active');  // Cerrar el modal cuando se hace clic fuera del modal
-    limpiarModal();
+modal.addEventListener('click', function(event) {
+    if (event.target === modalBackground) {
+        modal.classList.remove('is-active');
+        limpiarModal();
+    }
 });
 
 function limpiarModal() {
@@ -35,6 +38,8 @@ function cerrarModal() {
 
 function restaurar() {
     editarInvisible.style.display = 'none';
+    let guardarInvisible = document.getElementById('guardar');
+    guardarInvisible.style.display = 'inline-block'; 
 }
 
 function crearJugador() {

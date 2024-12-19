@@ -122,7 +122,7 @@ function eliminar_dato(id) {
     }
 }
 
-let guardarInvisible = document.getElementById('guardar');  
+let guardarInvisible = document.getElementById('guardar');
 let editarInvisible = document.getElementById('edit')
 
 function editar_jugador(id) {
@@ -135,7 +135,10 @@ function editar_jugador(id) {
     document.getElementById('servidor').value = id.servidor;
 
     let modal = document.getElementById('myModal');
-    guardarInvisible.style.display = 'none'; // ocultar el boton de guardar para el usuario 
+    guardarInvisible.style.display = 'none'; // ocultar el boton de guardar para el usuario
+    let guardarInvisible_2 = document.getElementById('edit')
+    guardarInvisible_2.style.display = 'inline-block'; 
+    
     modal.classList.add('is-active');
 
     modal.setAttribute('data-id', id.id_jugador);

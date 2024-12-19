@@ -66,8 +66,8 @@ CREATE TABLE equipos (
 CREATE TABLE partidas (
     id_partida SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    fecha_inicio DATE NOT NULL,
-    fecha_fin DATE,
+    fecha_inicio VARCHAR(100) NOT NULL,
+    fecha_fin VARCHAR(100),
     estado VARCHAR(20),
     equipo_1 INT NOT NULL,
     equipo_2 INT NOT NULL,

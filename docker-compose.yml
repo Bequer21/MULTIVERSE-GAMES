@@ -12,6 +12,7 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
+      - TZ=America/Argentina/Buenos_Aires # Zona horaria configurada
     depends_on:
       - db
     networks:
@@ -34,6 +35,7 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+      TZ: America/Argentina/Buenos_Aires # Zona horaria configurada
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
