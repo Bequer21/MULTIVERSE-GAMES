@@ -31,12 +31,14 @@ function gestion_jugadores() {
     solicitud_Autenticacion("http://localhost:5000/jugadores")
     .then(response => response.json())
     .then(datos => {
-
+        // Ordenar los jugadores si es necesario
+        datos.sort((a, b) => a.id_jugador - b.id_jugador);  // Ordena por ID de jugador
+        let index = 1;
         datos.forEach(dat_jugador => {
             let jugador = document.createElement("tr");
 
             let id = document.createElement("th");
-            id.innerHTML = dat_jugador.id_jugador;
+            id.innerHTML = index++;
             
             let nombre = document.createElement("td");
             nombre.innerHTML = dat_jugador.nombre;
@@ -80,7 +82,7 @@ function gestion_jugadores() {
             i.classList.add("fa-solid", "fa-pen-to-square");
 
             boton_modificar.appendChild(i);
-            Boton_Editar.appendChild(boton_modificar)
+            Boton_Editar.appendChild(boton_modificar);
 
             let Boton_Eliminar = document.createElement("td");
 
@@ -92,7 +94,7 @@ function gestion_jugadores() {
             j.classList.add("fas", "fa-trash");
 
             boton_eliminar.appendChild(j);
-            Boton_Eliminar.appendChild(boton_eliminar)
+            Boton_Eliminar.appendChild(boton_eliminar);
 
             jugador.appendChild(Boton_Editar);
             jugador.appendChild(Boton_Eliminar);
@@ -100,18 +102,29 @@ function gestion_jugadores() {
 
             jugadores.appendChild(jugador);
         });
-    })
+    });
 }
 function eliminar_dato(id) {
-    solicitud_Autenticacion(`http://localhost:5000/jugadores/${id}`,'DELETE')
-    .then(response => {
-        if (response.ok) {
-            gestion_jugadores();
-            location.reload()
-
-        }
-    })
+    let confirmar = confirm("¿Estás seguro de que deseas eliminar este jugador?");
+    if (confirmar) {
+        solicitud_Autenticacion(`http://localhost:5000/jugadores/${id}`,'DELETE')
+        .then(response => {
+            if (response.ok) {
+                gestion_jugadores();
+            }
+        })
+        .catch(error => {
+            console.error("Error en la solicitud:", error);
+            alert("Hubo un problema al eliminar el jugador.");
+        });
+    } else {
+        console.log("Eliminación cancelada.");
+    }
 }
+
+let guardarInvisible = document.getElementById('guardar');  
+let editarInvisible = document.getElementById('edit')
+
 function editar_jugador(id) {
     document.getElementById('nombre').value = id.nombre;
     document.getElementById('contraseña').value = id.contrasena;
@@ -119,10 +132,10 @@ function editar_jugador(id) {
     document.getElementById('nivel').value = id.nivel;
     document.getElementById('pais').value = id.pais;
     document.getElementById('estado').value = id.estado;
-
     document.getElementById('servidor').value = id.servidor;
 
-    const modal = document.getElementById('myModal');
+    let modal = document.getElementById('myModal');
+    guardarInvisible.style.display = 'none'; // ocultar el boton de guardar para el usuario 
     modal.classList.add('is-active');
 
     modal.setAttribute('data-id', id.id_jugador);
@@ -157,12 +170,11 @@ function editar() {
                 cerrarModal();
                 limpiarModal();
                 gestion_jugadores();
+                guardarInvisible.style.display = 'inline-block';
                 location.reload()
 
             }else {
                 alert('No se pudo editar');
-                limpiarModal();
-                cerrarModal();
             }
         })
 }
