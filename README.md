@@ -684,123 +684,122 @@ La API Habilidades permite gestionar las habilidades de los campeones en el sist
 - **Descripción:** Obtiene una lista de todos los equipos.
 - **Respuesta exitosa (200):**  
      ```json
-[
-    {
-        "id_equipo": 2,
-        "nombre": "Equipo Invencible",
-        "victorias": 10,
-        "jugadores": [
-            {
-                "id_jugador": 5,
-                "nombre": "Jugador2",
-                "contrasena": "password2",
-                "email": "jugador2@example.com",
-                "fecha_creacion": "2024-01-02T16:00:00.000Z",
-                "nivel": 12,
-                "estado": "Activo",
-                "pais": "Chile",
-                "servidor": "LAS"
-            },
-            {
-                "id_jugador": 6,
-                "nombre": "Jugador3",
-                "contrasena": "password3",
-                "email": "jugador3@example.com",
-                "fecha_creacion": "2024-01-03T17:00:00.000Z",
-                "nivel": 7,
-                "estado": "Inactivo",
-                "pais": "Brasil",
-                "servidor": "NA"
-            },
-            {
-                "id_jugador": 7,
-                "nombre": "Jugador4",
-                "contrasena": "password4",
-                "email": "jugador4@example.com",
-                "fecha_creacion": "2024-01-04T18:00:00.000Z",
-                "nivel": 20,
-                "estado": "Activo",
-                "pais": "México",
-                "servidor": "LAN"
-            },
-            {
-                "id_jugador": 8,
-                "nombre": "Jugador5",
-                "contrasena": "password5",
-                "email": "jugador5@example.com",
-                "fecha_creacion": "2024-01-05T19:00:00.000Z",
-                "nivel": 15,
-                "estado": "Activo",
-                "pais": "Colombia",
-                "servidor": "LAS"
-            },
-            {
-                "id_jugador": 9,
-                "nombre": "Jugador6",
-                "contrasena": "password6",
-                "email": "jugador6@example.com",
-                "fecha_creacion": "2024-01-06T20:00:00.000Z",
-                "nivel": 22,
-                "estado": "Inactivo",
-                "pais": "Perú",
-                "servidor": "EUW"
-            }
-        ],
-        "campeones": [
-            {
-                "id_campeon": 1,
-                "nombre": "Ahri",
-                "rol": "Mago",
-                "imagen": "/img/campeones/1_Ahri.jpg",
-                "historia": "Una zorra mágica que busca su humanidad.",
-                "dificultad": "Media",
-                "fecha_creacion": "2024-12-01T03:00:00.000Z",
-                "habilidad": 1
-            },
-            {
-                "id_campeon": 2,
-                "nombre": "Darius",
-                "rol": "Luchador",
-                "imagen": "/img/campeones/2_Darius.jpg",
-                "historia": "Un guerrero imparable que busca la gloria.",
-                "dificultad": "Alta",
-                "fecha_creacion": "2024-12-01T03:00:00.000Z",
-                "habilidad": 2
-            },
-            {
-                "id_campeon": 3,
-                "nombre": "Ivern",
-                "rol": "Soporte",
-                "imagen": "/img/campeones/3_Ivern.jpg",
-                "historia": "Un ser que se comunica con la naturaleza y sus árboles.",
-                "dificultad": "Baja",
-                "fecha_creacion": "2024-12-01T03:00:00.000Z",
-                "habilidad": 3
-            },
-            {
-                "id_campeon": 4,
-                "nombre": "Miss Fortune",
-                "rol": "Tirador",
-                "imagen": "/img/campeones/4_MissFortune.jpg",
-                "historia": "Una tiradora que busca venganza tras la muerte de su familia.",
-                "dificultad": "Media",
-                "fecha_creacion": "2024-12-01T03:00:00.000Z",
-                "habilidad": 4
-            },
-            {
-                "id_campeon": 5,
-                "nombre": "Kennen",
-                "rol": "Mago",
-                "imagen": "/img/campeones/5_Kennen.jpg",
-                "historia": "Un ninja eléctrico con la habilidad de controlar tormentas.",
-                "dificultad": "Alta",
-                "fecha_creacion": "2024-12-01T03:00:00.000Z",
-                "habilidad": 5
-            }
-        ]
-    }
-]
-
+     [
+         {
+             "id_equipo": 2,
+             "nombre": "Equipo Invencible",
+             "victorias": 10,
+             "jugadores": [
+                 {
+                     "id_jugador": 5,
+                     "nombre": "Jugador2",
+                     "contrasena": "password2",
+                     "email": "jugador2@example.com",
+                     "fecha_creacion": "2024-01-02T16:00:00.000Z",
+                     "nivel": 12,
+                     "estado": "Activo",
+                     "pais": "Chile",
+                     "servidor": "LAS"
+                 },
+                 {
+                     "id_jugador": 6,
+                     "nombre": "Jugador3",
+                     "contrasena": "password3",
+                     "email": "jugador3@example.com",
+                     "fecha_creacion": "2024-01-03T17:00:00.000Z",
+                     "nivel": 7,
+                     "estado": "Inactivo",
+                     "pais": "Brasil",
+                     "servidor": "NA"
+                 },
+                 {
+                     "id_jugador": 7,
+                     "nombre": "Jugador4",
+                     "contrasena": "password4",
+                     "email": "jugador4@example.com",
+                     "fecha_creacion": "2024-01-04T18:00:00.000Z",
+                     "nivel": 20,
+                     "estado": "Activo",
+                     "pais": "México",
+                     "servidor": "LAN"
+                 },
+                 {
+                     "id_jugador": 8,
+                     "nombre": "Jugador5",
+                     "contrasena": "password5",
+                     "email": "jugador5@example.com",
+                     "fecha_creacion": "2024-01-05T19:00:00.000Z",
+                     "nivel": 15,
+                     "estado": "Activo",
+                     "pais": "Colombia",
+                     "servidor": "LAS"
+                 },
+                 {
+                     "id_jugador": 9,
+                     "nombre": "Jugador6",
+                     "contrasena": "password6",
+                     "email": "jugador6@example.com",
+                     "fecha_creacion": "2024-01-06T20:00:00.000Z",
+                     "nivel": 22,
+                     "estado": "Inactivo",
+                     "pais": "Perú",
+                     "servidor": "EUW"
+                 }
+             ],
+             "campeones": [
+                 {
+                     "id_campeon": 1,
+                     "nombre": "Ahri",
+                     "rol": "Mago",
+                     "imagen": "/img/campeones/1_Ahri.jpg",
+                     "historia": "Una zorra mágica que busca su humanidad.",
+                     "dificultad": "Media",
+                     "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                     "habilidad": 1
+                 },
+                 {
+                     "id_campeon": 2,
+                     "nombre": "Darius",
+                     "rol": "Luchador",
+                     "imagen": "/img/campeones/2_Darius.jpg",
+                     "historia": "Un guerrero imparable que busca la gloria.",
+                     "dificultad": "Alta",
+                     "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                     "habilidad": 2
+                 },
+                 {
+                     "id_campeon": 3,
+                     "nombre": "Ivern",
+                     "rol": "Soporte",
+                     "imagen": "/img/campeones/3_Ivern.jpg",
+                     "historia": "Un ser que se comunica con la naturaleza y sus árboles.",
+                     "dificultad": "Baja",
+                     "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                     "habilidad": 3
+                 },
+                 {
+                     "id_campeon": 4,
+                     "nombre": "Miss Fortune",
+                     "rol": "Tirador",
+                     "imagen": "/img/campeones/4_MissFortune.jpg",
+                     "historia": "Una tiradora que busca venganza tras la muerte de su familia.",
+                     "dificultad": "Media",
+                     "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                     "habilidad": 4
+                 },
+                 {
+                     "id_campeon": 5,
+                     "nombre": "Kennen",
+                     "rol": "Mago",
+                     "imagen": "/img/campeones/5_Kennen.jpg",
+                     "historia": "Un ninja eléctrico con la habilidad de controlar tormentas.",
+                     "dificultad": "Alta",
+                     "fecha_creacion": "2024-12-01T03:00:00.000Z",
+                     "habilidad": 5
+                 }
+             ]
+         }
+     ]
     ```
 
 - **Errores comunes:**
