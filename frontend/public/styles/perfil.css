@@ -1,3 +1,8 @@
+footer{
+    margin-top: auto;
+    background-color: hsl(240, 20%, 6%); 
+    color: #fff;
+}
 label{
     padding-top:10px
 }
@@ -7,11 +12,15 @@ html, body {
     padding: 0;
 }
 
+  
 /* Estilos generales para el body */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #22252b; /* Fondo negro */
     color: #000000; /* Texto blanco */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 .nav-link,
 

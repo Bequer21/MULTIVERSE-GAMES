@@ -164,7 +164,7 @@ async function getAllChampions() {
           console.log(data)
           document.getElementById('abilityDescription').innerText = data.descripcion;
           document.getElementById('abilityStrength').innerText = data.fuerza;
-          document.getElementById('abilityCooldown').innerText = data.tiempo_enfriamiento.seconds;
+          document.getElementById('abilityCooldown').innerText = data.tiempo_enfriamiento;
           document.getElementById('abilityManaCost').innerText = data.consumo_mana;
   
           // Hacer visibles los campos de atributos

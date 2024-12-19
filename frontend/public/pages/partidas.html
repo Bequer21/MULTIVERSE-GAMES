@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../assets/duelo.jpg" type="image/jpg">
 
-  <link href="../styles/style.css" rel="stylesheet">
+  <link href="../styles/campeones-partidas.css" rel="stylesheet">
 </head>
 <body>
   <!-- Barra de Navegación -->
@@ -30,10 +30,13 @@
           </li>
           <li class="nav-item active"><a class="nav-link" href="partidas.html">Partidas</a></li>
           <li class="nav-item"><a class="nav-link" href="jugadores.html">Jugadores</a></li>
+          <li class="nav-item"><a class="nav-link" href="habilidades.html">Habilidades</a></li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="container my-5">
+    <h1 class="mb-4">COMIENZA UNA PARTIDA...</h1> 
 
   <div class="container">
     <button type="button" class="btn btn-light" style="margin-top:10px; margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#agregarPartidaModal">Agregar Partida</button>
@@ -57,6 +60,7 @@
         </tbody>
     </table>
   </div>
+  </div>
   <div class="modal fade" id="agregarPartidaModal" tabindex="-1" aria-labelledby="agregarPartidaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -79,7 +83,7 @@
 
                 <div class="col">
                   <label for="jugador1Equipo1">Jugador 1</label>
-                  <select class="form-select" id="jugador1Equipo1" required>
+                  <select class="form-select j" id="jugador1Equipo1" required>
                     <option value="">Seleccione Jugador</option>
                   </select>
                 </div>
@@ -93,7 +97,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador2Equipo1">Jugador 2</label>
-                  <select class="form-select" id="jugador2Equipo1">
+                  <select class="form-select j" id="jugador2Equipo1">
                     <option value="">Seleccione Jugador</option>
 
                   </select>
@@ -108,7 +112,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador3Equipo1">Jugador 3</label>
-                  <select class="form-select" id="jugador3Equipo1">
+                  <select class="form-select j" id="jugador3Equipo1">
                     <option value="">Seleccione Jugador</option>
                   </select>
                 </div>
@@ -122,7 +126,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador4Equipo1">Jugador 4</label>
-                  <select class="form-select" id="jugador4Equipo1">
+                  <select class="form-select j" id="jugador4Equipo1">
                     <option value="">Seleccione Jugador</option>
 
                   </select>
@@ -137,7 +141,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador5Equipo1">Jugador 5</label>
-                  <select class="form-select" id="jugador5Equipo1">
+                  <select class="form-select j" id="jugador5Equipo1">
                     <option value="">Seleccione Jugador</option>
                   </select>
                 </div>
@@ -157,7 +161,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador1Equipo2">Jugador 1</label>
-                  <select class="form-select" id="jugador1Equipo2">
+                  <select class="form-select j" id="jugador1Equipo2">
                     <option value="">Seleccione Jugador</option>
 
                   </select>
@@ -171,7 +175,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador2Equipo2">Jugador 2</label>
-                  <select class="form-select" id="jugador2Equipo2">
+                  <select class="form-select j" id="jugador2Equipo2">
                     <option value="">Seleccione Jugador</option>
 
                   </select>
@@ -185,7 +189,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador3Equipo2">Jugador 3</label>
-                  <select class="form-select" id="jugador3Equipo2">
+                  <select class="form-select j" id="jugador3Equipo2">
                     <option value="">Seleccione Jugador</option>
 
                   </select>
@@ -199,7 +203,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador4Equipo2">Jugador 4</label>
-                  <select class="form-select" id="jugador4Equipo2">
+                  <select class="form-select j" id="jugador4Equipo2">
                     <option value="">Seleccione Jugador</option>
 
                   </select>
@@ -213,7 +217,7 @@
               <div class="row">
                 <div class="col">
                   <label for="jugador5Equipo2">Jugador 5</label>
-                  <select class="form-select" id="jugador5Equipo2">
+                  <select class="form-select j" id="jugador5Equipo2">
                     <option value="">Seleccione Jugador</option>
 
                   </select>
@@ -290,8 +294,7 @@
   </div>
 </body>
 
-<footer style="padding: 20px 0; background-color: hsl(240, 20%, 6%); color: #fff;">
-  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+<footer>  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
       <ul style="margin: 0; padding: 0; list-style: none;">
           <li style="margin-bottom: 5px;">Mario Schieder</li>
           <li style="margin-bottom: 5px;">Bequer Smith Huaman Quispe</li>

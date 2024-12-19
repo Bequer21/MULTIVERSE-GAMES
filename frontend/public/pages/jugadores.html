@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>MG - Jugadores</title>
-    <link rel="icon" href="duelo.jpg" type="image/jpg">
+    <link rel="icon" href="../assets/duelo.jpg" type="image/jpg">
     <link href="../styles/perfil.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -31,7 +31,9 @@
           
                     <a class="navbar-item nav-link" href="partidas.html">Partidas </a>
                     
-                    <a class="navbar-item nav-link" href="jugadores.html" >Jugadores </a>
+                    <a class="navbar-item nav-link active" href="jugadores.html" >Jugadores </a>
+                    <a class="navbar-item nav-link" href="habilidades.html" >Habilidades</a>
+
                 </div>
           
             </div>
@@ -93,28 +95,34 @@
                                           <input id="nivel" class="input" type="number" required>
                                         </div>
                                     </div>
-
                                     <div class="field">
-                                        <label class="label">Estado</label>
+                                      <label class="label">Pais</label>
+                                      <div class="control has-icons-left has-icons-right">
+                                        <input id="pais"  class="input" type="text" required>
+                                      </div>
+                                  </div>
+                                    <div class="field">
+                                        <label class="label">Estado / Provincia </label>
                                         <div class="control has-icons-left has-icons-right">
                                           <input id="estado" class="input" type="text" required>
                                         </div>
                                     </div>
 
-                                    <div class="field">
-                                        <label class="label">Pais</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input id="pais"  class="input" type="text" required>
-                                        </div>
-                                    </div>
+                          
 
                                     <div class="field">
-                                        <label class="label">Servidor</label>
-                                        <div class="control has-icons-left has-icons-right">
-                                          <input id="servidor" class="input" type="text" required>
-                                        </div>
-                                    </div>
-
+                                    
+                                      <label class="label">Servidor</label>
+                                      <select class="input" id="servidor" required>
+                                      <option value="">Seleccione Servidor</option>
+                                      <option value="NORTEAMERICA">NORTEAMERICA</option>
+                                      <option value="LATINOAMERICA">LATINOAMERICA</option>
+                                      <option value="EUROPA">EUROPA</option>
+                                      <option value="ASIA">ASIA</option>
+                                      
+                                    </select> 
+                                  </div>
+                                    
                                     <button class="button is-info is-light" onclick="crearJugador()">Guardar</button>
                                     <button class="button is-info is-light" onclick="editar(event)">Editar</button>
                                 </form>
@@ -130,12 +138,13 @@
             <thead>
               <tr>
                 <th><abbr title="Position">Orden</abbr></th>
-                <th><abbr title="Played">Estado</abbr></th>
                 <th><abbr title="Won">Jugador</abbr></th>
                 <th><abbr title="Drawn">Email</abbr></th>
                 <th><abbr title="Played">Creacion</abbr></th>
                 <th><abbr title="Goals for">Nivel</abbr></th>
                 <th><abbr title="Lost">Pais</abbr></th>
+                <th><abbr title="Played">Estado</abbr></th>
+
                 <th><abbr title="Goals against">Servidor</abbr></th>
               </tr>
             </thead>
@@ -144,7 +153,7 @@
         </table>
     </section>
 
-    <footer style="padding: 20px 0; background-color: hsl(240, 20%, 6%); color: #fff;">
+    <footer>
       <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
           <ul style="margin: 0; padding: 0; list-style: none;">
               <li style="margin-bottom: 5px;">Mario Schieder</li>

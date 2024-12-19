@@ -73,5 +73,5 @@ CREATE TABLE partidas (
     equipo_2 INT NOT NULL,
     ganador VARCHAR(100),
     CONSTRAINT fk_equipo1 FOREIGN KEY (equipo_1) REFERENCES equipos(id_equipo) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_equipo2 FOREIGN KEY (equipo_2) REFERENCES equipos(id_equipo) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_equipo2 FOREIGN KEY (equipo_2) REFERENCES equipos(id_equipo) ON DELETE CASCADE ON UPDATE CASCADE
 );

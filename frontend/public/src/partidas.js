@@ -38,7 +38,7 @@ function populateSelectOptions(selectId, jugadores) {
 }
 
 function setupValidation() {
-  const selects = document.querySelectorAll('.form-select');
+  const selects = document.querySelectorAll('.form-select.j');
   const jugadoresSeleccionados = new Set();
 
   selects.forEach(select => {
@@ -271,7 +271,7 @@ function mostrarModal(idPartida) {
           },
           body: JSON.stringify({
             estado: "PARTIDA FINALIZADA",
-            fecha_fin: new Date(),
+            fecha_fin: formatearFecha(new Date()),
             ganador: ganador,
             nombre: nombre_partida_actual,
             fecha_inicio: fecha_inicio_actual,

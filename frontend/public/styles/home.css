@@ -1,3 +1,9 @@
+footer{
+    margin-top: auto;
+    background-color: hsl(240, 20%, 6%); 
+    color: #fff;
+}
+
 label {
     padding-top: 10px;
 }
@@ -6,6 +12,9 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #000;
     color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {

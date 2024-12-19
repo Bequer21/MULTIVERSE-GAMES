@@ -46,7 +46,7 @@ function gestion_jugadores() {
             email.innerHTML = dat_jugador.email;
 
             let fecha = document.createElement("td");
-            fecha.innerHTML = dat_jugador.fecha_creacion;
+            fecha.innerHTML = formatearFecha(dat_jugador.fecha_creacion);
 
             let nivel = document.createElement("td");
             nivel.innerHTML = dat_jugador.nivel;
@@ -61,12 +61,12 @@ function gestion_jugadores() {
             servidor.innerHTML = dat_jugador.servidor;
 
             jugador.appendChild(id);
-            jugador.appendChild(estado);
             jugador.appendChild(nombre);
             jugador.appendChild(email);
             jugador.appendChild(fecha);
             jugador.appendChild(nivel);
             jugador.appendChild(pais);
+            jugador.appendChild(estado);
             jugador.appendChild(servidor);
 
             let Boton_Editar = document.createElement("td");
@@ -107,6 +107,8 @@ function eliminar_dato(id) {
     .then(response => {
         if (response.ok) {
             gestion_jugadores();
+            location.reload()
+
         }
     })
 }
@@ -115,8 +117,9 @@ function editar_jugador(id) {
     document.getElementById('contraseña').value = id.contrasena;
     document.getElementById('email').value = id.email;
     document.getElementById('nivel').value = id.nivel;
-    document.getElementById('estado').value = id.estado;
     document.getElementById('pais').value = id.pais;
+    document.getElementById('estado').value = id.estado;
+
     document.getElementById('servidor').value = id.servidor;
 
     const modal = document.getElementById('myModal');
@@ -154,10 +157,30 @@ function editar() {
                 cerrarModal();
                 limpiarModal();
                 gestion_jugadores();
+                location.reload()
+
             }else {
                 alert('No se pudo editar');
                 limpiarModal();
                 cerrarModal();
             }
         })
+}
+
+
+function formatearFecha(fechaISO) {
+    if (fechaISO === null || fechaISO === undefined) {
+        return ''; 
+    }
+    // Crear un objeto Date a partir de la fecha ISO
+    const fecha = new Date(fechaISO);
+  
+    // Formatear los componentes de la fecha en UTC
+    const año = fecha.getUTCFullYear();
+    const mes = String(fecha.getUTCMonth() + 1).padStart(2, '0'); // Mes empieza en 0
+    const dia = String(fecha.getUTCDate()).padStart(2, '0');
+
+  
+    // Retornar la fecha formateada
+    return `${año}-${mes}-${dia}`;
 }
