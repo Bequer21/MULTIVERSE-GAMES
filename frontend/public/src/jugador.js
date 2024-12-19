@@ -4,14 +4,17 @@ const modal = document.getElementById('myModal');
 
 openModalBtn.addEventListener('click', function() {
     modal.classList.add('is-active');
+    limpiarModal();
 });
 
 closeModalBtn.addEventListener('click', function() {
     modal.classList.remove('is-active'); 
+    limpiarModal();
 });
 
 modal.querySelector('.modal-background').addEventListener('click', function() {
     modal.classList.remove('is-active');  // Cerrar el modal cuando se hace clic fuera del modal
+    limpiarModal();
 });
 
 function limpiarModal() {
@@ -22,11 +25,18 @@ function limpiarModal() {
     document.getElementById('estado').value = '';
     document.getElementById('pais').value = '';
     document.getElementById('servidor').value = '';
+    document.getElementById('nombre').focus(); // para que vuelva al inicio cuando se abra el modal nuevamente
 }
 function cerrarModal() {
     const modal = document.getElementById('myModal');
     modal.classList.remove('is-active'); 
+    limpiarModal();
 }
+
+function restaurar() {
+    editarInvisible.style.display = 'none';
+}
+
 function crearJugador() {
     const form = document.getElementById('formulario');
     const inputs = form.querySelectorAll('input[required]');
@@ -66,11 +76,13 @@ function crearJugador() {
             .then(response => {
                 if (response.status === 201) {
                     alert('Jugador creado con exito');
-                    cerrarModal();
                     limpiarModal();
+                    cerrarModal();
                     gestion_jugadores();
-                }else {
+                    editarInvisible.style.display = 'inline-block';
+                } else {
                     alert('No se pudo crear');
+                    limpiarModal();
                 }
             })
     }
